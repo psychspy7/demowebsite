@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js build output
+.next/
+out/
+
+# Environment files
+.env*
+!.env.example
+
+# Local runtime data
+.data/
+*.tsbuildinfo
+test-results/
+coverage/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Deployment artifacts
+.vercel
+.turbo
