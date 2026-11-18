@@ -1,0 +1,576 @@
+{
+  "description": "Fictional draft fixtures. Import only in a development environment. No real contacts or credentials.",
+  "demos": [
+    {
+      "id": "8c7063ba-be03-400b-8ee3-98c884e57e7b",
+      "businessName": "Example Care Clinic",
+      "slug": "example-care-clinic",
+      "industry": "medico",
+      "templateId": "medico-1",
+      "status": "draft",
+      "createdAt": "2026-11-17T20:40:48.583Z",
+      "updatedAt": "2026-11-17T20:40:48.583Z",
+      "revision": 1,
+      "notes": "",
+      "business": {
+        "tagline": "Care, made accessible",
+        "description": "An illustrative website concept. Replace this copy with approved business information before sharing.",
+        "category": "Hospitals",
+        "logo": "",
+        "favicon": ""
+      },
+      "contact": {
+        "phone": "",
+        "whatsapp": "",
+        "whatsappMessage": "Hello Example Care Clinic, I would like to know more.",
+        "email": "",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "maps": "",
+        "instagram": "",
+        "facebook": "",
+        "linkedin": ""
+      },
+      "hero": {
+        "heading": "Care that starts with you.",
+        "description": "Welcoming digital experiences for every kind of care.",
+        "image": "/images/medical.jpg",
+        "ctaLabel": "Request an appointment",
+        "ctaLink": "#enquire"
+      },
+      "design": {
+        "primary": "#17665b",
+        "secondary": "#f3efe7",
+        "accent": "#d4c3a5",
+        "font": "serif",
+        "theme": "light",
+        "buttonStyle": "soft",
+        "layout": "editorial"
+      },
+      "seo": {
+        "title": "Example Care Clinic",
+        "description": "Explore this hospitals website concept.",
+        "ogImage": "/images/medical.jpg",
+        "canonical": "",
+        "noindex": true
+      },
+      "settings": {
+        "expiresAt": "",
+        "passwordHash": "",
+        "showDemoLabel": true
+      },
+      "sections": [
+        {
+          "id": "b506cfc9-39ab-4ebf-899d-d32a1b8a4a24",
+          "kind": "about",
+          "heading": "A little about us",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        },
+        {
+          "id": "a585c4d2-deac-4566-94e8-ec4a2c233611",
+          "kind": "services",
+          "heading": "Care & specialities",
+          "description": "Illustrative offerings. Confirm services, pricing and availability with the business.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "117f79e2-ccea-42b0-a1f2-05ed4ab4da73",
+              "title": "Consultation enquiries",
+              "text": "Learn about the care options available and ask about arranging a consultation.",
+              "price": "",
+              "category": "Care",
+              "image": "/images/medical.jpg",
+              "link": ""
+            },
+            {
+              "id": "eba61e16-b733-4482-a822-fdfabd7cbfd3",
+              "title": "Specialist services",
+              "text": "An example space for confirmed specialities and the services offered by the clinic.",
+              "price": "",
+              "category": "Specialities",
+              "image": "/images/medical.jpg",
+              "link": ""
+            },
+            {
+              "id": "bfd07a8a-4391-42f6-a461-6c998b352cbd",
+              "title": "Plan your visit",
+              "text": "Find practical details about appointments, accessibility and what to expect.",
+              "price": "",
+              "category": "Your visit",
+              "image": "/images/medical.jpg",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "67992d55-025d-47d2-a291-700d11df8e6d",
+          "kind": "team",
+          "heading": "Meet your care team",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        },
+        {
+          "id": "59584174-c16f-4223-9e6a-d6ca7fe9c864",
+          "kind": "hours",
+          "heading": "Clinic hours",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "448089d9-e277-407d-813d-c70fe13f315e",
+              "title": "Monday – Friday",
+              "text": "Add confirmed opening hours",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            },
+            {
+              "id": "acca536b-3301-4a2a-b9f2-983d35be1f39",
+              "title": "Saturday – Sunday",
+              "text": "Add confirmed opening hours",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "5e18c731-caac-48db-809b-3e8c480a590b",
+          "kind": "faq",
+          "heading": "Before your visit",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "b24cacfc-a47f-4c8c-a571-cbf5ad82de09",
+              "title": "How can I make an enquiry?",
+              "text": "Use the enquiry form below. The business can follow up using your contact details.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            },
+            {
+              "id": "146e2ba2-7ac9-4f2e-8d0a-080cdf87381d",
+              "title": "Is this a live business website?",
+              "text": "This is an illustrative website concept. Services, availability and pricing must be confirmed with the business.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "fc13eb1f-46b8-423f-905a-9033eef92fd0",
+          "kind": "contact",
+          "heading": "Let’s start a conversation",
+          "description": "Tell us what you have in mind. We’ll help you find the next step.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        }
+      ],
+      "footer": "Website demonstration. Please confirm all details directly with the business."
+    },
+    {
+      "id": "3fdc4ee5-955e-40bf-baca-b2bc974e7366",
+      "businessName": "Example Corner Café",
+      "slug": "example-corner-cafe",
+      "industry": "restaurant",
+      "templateId": "restaurant-2",
+      "status": "draft",
+      "createdAt": "2026-11-17T20:40:48.583Z",
+      "updatedAt": "2026-11-17T20:40:48.583Z",
+      "revision": 1,
+      "notes": "",
+      "business": {
+        "tagline": "Made to be savoured",
+        "description": "An illustrative website concept. Replace this copy with approved business information before sharing.",
+        "category": "Cafés",
+        "logo": "",
+        "favicon": ""
+      },
+      "contact": {
+        "phone": "",
+        "whatsapp": "",
+        "whatsappMessage": "Hello Example Corner Café, I would like to know more.",
+        "email": "",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "maps": "",
+        "instagram": "",
+        "facebook": "",
+        "linkedin": ""
+      },
+      "hero": {
+        "heading": "Good food. Better company.",
+        "description": "From the first impression to the first reservation enquiry.",
+        "image": "/images/restaurant.jpg",
+        "ctaLabel": "Enquire about a table",
+        "ctaLink": "#enquire"
+      },
+      "design": {
+        "primary": "#86442e",
+        "secondary": "#f3efe7",
+        "accent": "#d4c3a5",
+        "font": "sans",
+        "theme": "light",
+        "buttonStyle": "soft",
+        "layout": "structured"
+      },
+      "seo": {
+        "title": "Example Corner Café",
+        "description": "Explore this cafés website concept.",
+        "ogImage": "/images/restaurant.jpg",
+        "canonical": "",
+        "noindex": true
+      },
+      "settings": {
+        "expiresAt": "",
+        "passwordHash": "",
+        "showDemoLabel": true
+      },
+      "sections": [
+        {
+          "id": "26648703-cf99-4d34-857f-5321d97aafa0",
+          "kind": "about",
+          "heading": "A little about us",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        },
+        {
+          "id": "4bf15edd-55f4-49e5-9478-f838c5eab147",
+          "kind": "catalogue",
+          "heading": "At the table",
+          "description": "Illustrative offerings. Confirm services, pricing and availability with the business.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "f182b779-1ef0-4714-8473-f6e37c4203d1",
+              "title": "House special",
+              "text": "A sample menu entry. Add the dish, ingredients and confirmed price.",
+              "price": "",
+              "category": "Kitchen",
+              "image": "/images/restaurant.jpg",
+              "link": ""
+            },
+            {
+              "id": "9a937389-23d9-478f-a970-236efa044a97",
+              "title": "Something to sip",
+              "text": "Present a signature drink and any relevant dietary information.",
+              "price": "",
+              "category": "Drinks",
+              "image": "/images/restaurant.jpg",
+              "link": ""
+            },
+            {
+              "id": "d06e2a27-68d8-4202-86e1-2605a2fa25cb",
+              "title": "A sweet finish",
+              "text": "Introduce a dessert from the confirmed menu.",
+              "price": "",
+              "category": "Desserts",
+              "image": "/images/restaurant.jpg",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "6639f39e-3433-4a19-905d-5a444c8738c4",
+          "kind": "gallery",
+          "heading": "A taste of the space",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "c0e949d0-4c3e-4bf8-aca6-660a7403dd9a",
+              "title": "A closer look",
+              "text": "Illustrative stock photography",
+              "price": "",
+              "category": "",
+              "image": "/images/restaurant.jpg",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "86aa16a0-a7af-47bf-9bfb-213c482349eb",
+          "kind": "hours",
+          "heading": "Come on over",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "20e19cc4-6992-4553-a31b-b5515c91dc58",
+              "title": "Monday – Friday",
+              "text": "Add confirmed opening hours",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            },
+            {
+              "id": "65933234-05a9-4620-a4b0-31c742806560",
+              "title": "Saturday – Sunday",
+              "text": "Add confirmed opening hours",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "c8b727fa-0d71-4750-b746-befd7839897d",
+          "kind": "faq",
+          "heading": "Good to know",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "50151a79-63ab-4e17-a8e9-e89c2330cec1",
+              "title": "How can I make an enquiry?",
+              "text": "Use the enquiry form below. The business can follow up using your contact details.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            },
+            {
+              "id": "777deda6-d10f-4d63-a89a-21a0fd683263",
+              "title": "Is this a live business website?",
+              "text": "This is an illustrative website concept. Services, availability and pricing must be confirmed with the business.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "97e00950-387c-43f2-95fe-98176e1ce111",
+          "kind": "contact",
+          "heading": "Let’s start a conversation",
+          "description": "Tell us what you have in mind. We’ll help you find the next step.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        }
+      ],
+      "footer": "Website demonstration. Please confirm all details directly with the business."
+    },
+    {
+      "id": "d337ad9a-8da8-484a-9bd0-89ee8497e2ca",
+      "businessName": "Example Property Studio",
+      "slug": "example-property-studio",
+      "industry": "real-estate",
+      "templateId": "real-estate-1",
+      "status": "draft",
+      "createdAt": "2026-11-17T20:40:48.583Z",
+      "updatedAt": "2026-11-17T20:40:48.583Z",
+      "revision": 1,
+      "notes": "",
+      "business": {
+        "tagline": "Find your place",
+        "description": "An illustrative website concept. Replace this copy with approved business information before sharing.",
+        "category": "Property dealers",
+        "logo": "",
+        "favicon": ""
+      },
+      "contact": {
+        "phone": "",
+        "whatsapp": "",
+        "whatsappMessage": "Hello Example Property Studio, I would like to know more.",
+        "email": "",
+        "address": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "maps": "",
+        "instagram": "",
+        "facebook": "",
+        "linkedin": ""
+      },
+      "hero": {
+        "heading": "A place to call your own.",
+        "description": "Thoughtful spaces deserve an exceptional first impression.",
+        "image": "/images/property.jpg",
+        "ctaLabel": "Request a site visit",
+        "ctaLink": "#enquire"
+      },
+      "design": {
+        "primary": "#6a614b",
+        "secondary": "#f3efe7",
+        "accent": "#d4c3a5",
+        "font": "serif",
+        "theme": "light",
+        "buttonStyle": "soft",
+        "layout": "immersive"
+      },
+      "seo": {
+        "title": "Example Property Studio",
+        "description": "Explore this property dealers website concept.",
+        "ogImage": "/images/property.jpg",
+        "canonical": "",
+        "noindex": true
+      },
+      "settings": {
+        "expiresAt": "",
+        "passwordHash": "",
+        "showDemoLabel": true
+      },
+      "sections": [
+        {
+          "id": "a4f05d77-7fb0-4862-a930-ed0f641837ab",
+          "kind": "about",
+          "heading": "A little about us",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        },
+        {
+          "id": "ecae59d1-4e04-40c2-986a-3ade0cf0b25f",
+          "kind": "catalogue",
+          "heading": "Explore properties",
+          "description": "Illustrative offerings. Confirm services, pricing and availability with the business.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "a3227916-7078-4469-8996-25826696fbe2",
+              "title": "Featured residence",
+              "text": "Illustrative property listing. Add verified location, size and availability before sharing.",
+              "price": "",
+              "category": "Residential",
+              "image": "/images/property.jpg",
+              "link": ""
+            },
+            {
+              "id": "9009c1fa-2b83-416d-95d6-ae9818de09fd",
+              "title": "A space for business",
+              "text": "Illustrative commercial space. Replace with approved specifications and pricing.",
+              "price": "",
+              "category": "Commercial",
+              "image": "/images/property.jpg",
+              "link": ""
+            },
+            {
+              "id": "a1a56904-d708-4944-9d35-9a6c6ec37ae9",
+              "title": "A new neighbourhood",
+              "text": "Present a confirmed rental or development, with accurate location details.",
+              "price": "",
+              "category": "Rental",
+              "image": "/images/property.jpg",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "ebb9df2e-00ee-418c-b330-0fdfc5c37fe8",
+          "kind": "gallery",
+          "heading": "A closer look",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "361bec3c-28bf-4798-96d6-ee49781cc7a5",
+              "title": "A closer look",
+              "text": "Illustrative stock photography",
+              "price": "",
+              "category": "",
+              "image": "/images/property.jpg",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "39dd545f-c4b7-479b-b33e-c57351007e78",
+          "kind": "team",
+          "heading": "Your property team",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        },
+        {
+          "id": "278fa84a-ce00-4e1a-8f56-c2f27cc81cc3",
+          "kind": "faq",
+          "heading": "Buying & renting",
+          "description": "Add the details that make this business unique.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": [
+            {
+              "id": "dd3d58b6-8914-4d48-933f-047b046b859a",
+              "title": "How can I make an enquiry?",
+              "text": "Use the enquiry form below. The business can follow up using your contact details.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            },
+            {
+              "id": "980c3460-5ab7-48cc-940c-c59e6834011a",
+              "title": "Is this a live business website?",
+              "text": "This is an illustrative website concept. Services, availability and pricing must be confirmed with the business.",
+              "price": "",
+              "category": "",
+              "image": "",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "id": "f8048f4c-a297-43bd-957c-99e7188f6e34",
+          "kind": "contact",
+          "heading": "Let’s start a conversation",
+          "description": "Tell us what you have in mind. We’ll help you find the next step.",
+          "visible": true,
+          "ctaLabel": "",
+          "ctaLink": "",
+          "items": []
+        }
+      ],
+      "footer": "Website demonstration. Please confirm all details directly with the business."
+    }
+  ]
+}
