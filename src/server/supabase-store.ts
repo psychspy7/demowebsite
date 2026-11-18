@@ -51,7 +51,9 @@ async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const { url, key } = config();
   const headers = new Headers(init.headers);
   headers.set("apikey", key);
-  headers.set("Authorization", `Bearer ${key}`);
+  if (key.startsWith("eyJ")) {
+    headers.set("Authorization", `Bearer ${key}`);
+  }
   if (!headers.has("Content-Type")) headers.set("Content-Type", "application/json");
 
   const controller = new AbortController();
@@ -99,7 +101,9 @@ async function storage(path: string, init: RequestInit = {}): Promise<Response> 
   const { url, key } = config();
   const headers = new Headers(init.headers);
   headers.set("apikey", key);
-  headers.set("Authorization", `Bearer ${key}`);
+  if (key.startsWith("eyJ")) {
+    headers.set("Authorization", `Bearer ${key}`);
+  }
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
