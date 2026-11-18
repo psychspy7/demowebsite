@@ -19,8 +19,10 @@ export async function GET(_: Request, ctx: { params: Promise<{ id: string }> }) 
 
   let allowed = await isAdmin();
   if (!allowed) {
-    const db = await repo.read();
-    for (const d of db.demos) {
+    const demos = repo.getAvailableDemos
+      ? await repo.getAvailableDemos()
+      : (await repo.read()).demos;
+    for (const d of demos) {
       if (
         isAvailable(d) &&
         JSON.stringify(d).includes(a.url) &&

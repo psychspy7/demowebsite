@@ -195,27 +195,41 @@ class SupabaseRepository implements Repository {
     if (!this.seeded) {
       this.seeded = (async () => {
         try {
+          // Fast check: skip heavy catalogue upsert on cold starts once seeded
+          const existingTemplates = await api<{ template_key: string }[]>(
+            "templates?select=template_key",
+          );
+          if (existingTemplates.length >= templates.length) {
+            return;
+          }
+
           await api("industries?on_conflict=slug", {
             method: "POST",
             headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
-            body: JSON.stringify(industries.map((i) => ({ slug: i.id, name: i.name, definition: i }))),
+            body: JSON.stringify(
+              industries.map((i) => ({ slug: i.id, name: i.name, definition: i })),
+            ),
           });
           const rows = await api<any[]>("industries?select=id,slug");
           const ids = new Map(rows.map((x) => [x.slug, x.id]));
-          await api("templates?on_conflict=template_key", {
-            method: "POST",
-            headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
-            body: JSON.stringify(
-              templates.map((t) => ({
-                template_key: t.id,
-                industry_id: ids.get(t.industry),
-                name: t.name,
-                specialty: t.specialty,
-                layout: t.layout,
-                definition: t,
-              })),
-            ),
-          });
+          const batchSize = 20;
+          for (let i = 0; i < templates.length; i += batchSize) {
+            const batch = templates.slice(i, i + batchSize);
+            await api("templates?on_conflict=template_key", {
+              method: "POST",
+              headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+              body: JSON.stringify(
+                batch.map((t) => ({
+                  template_key: t.id,
+                  industry_id: ids.get(t.industry),
+                  name: t.name,
+                  specialty: t.specialty,
+                  layout: t.layout,
+                  definition: t,
+                })),
+              ),
+            });
+          }
         } catch (err) {
           // Clear cached seed promise if initial seeding fails so retry works
           this.seeded = null;
@@ -224,6 +238,42 @@ class SupabaseRepository implements Repository {
       })();
     }
     return this.seeded;
+  }
+
+  async ping(): Promise<void> {
+    await this.seed();
+    await api<any[]>("industries?select=id&limit=1");
+  }
+
+  async getAvailableDemos(): Promise<Demo[]> {
+    await this.seed();
+    const d = await api<any[]>(
+      "demos?status=eq.published&select=*,industries!inner(slug),templates!inner(template_key)",
+    );
+    if (!d || d.length === 0) return [];
+    const ids = d.map((r) => r.id).join(",");
+    const s = await api<any[]>(
+      `demo_sections?demo_id=in.(${ids})&order=position.asc`,
+    );
+    const sectionsByDemo = new Map<string, any[]>();
+    for (const sec of s) {
+      let list = sectionsByDemo.get(sec.demo_id);
+      if (!list) {
+        list = [];
+        sectionsByDemo.set(sec.demo_id, list);
+      }
+      list.push(sec);
+    }
+    return d.map((r) =>
+      mapDemo(
+        {
+          ...r,
+          industry_slug: r.industries.slug,
+          template_key: r.templates.template_key,
+        },
+        sectionsByDemo.get(r.id) || [],
+      ),
+    );
   }
 
   async read(): Promise<Database> {
@@ -426,10 +476,21 @@ class SupabaseRepository implements Repository {
     for (const [id, d] of newD) {
       const old = oldD.get(id);
       if (!old) {
-        await api("rpc/studio_create_demo", {
-          method: "POST",
-          body: JSON.stringify({ p_demo: demoPayload(d) }),
-        });
+        try {
+          await api("rpc/studio_create_demo", {
+            method: "POST",
+            body: JSON.stringify({ p_demo: demoPayload(d) }),
+          });
+        } catch (e) {
+          if (e instanceof SupabaseError && e.code === "23505") {
+            throw new SupabaseError(
+              "That demo URL is already in use.",
+              409,
+              "23505",
+            );
+          }
+          throw e;
+        }
       } else if (JSON.stringify(old) !== JSON.stringify(d)) {
         const { passwordHash, ...settings } = d.settings;
         const payload = demoPayload({
@@ -447,10 +508,20 @@ class SupabaseRepository implements Repository {
         } catch (e) {
           if (
             String(e).includes("REVISION_CONFLICT") ||
-            String(e).includes("40001")
+            String(e).includes("40001") ||
+            (e instanceof SupabaseError && e.code === "40001")
           ) {
-            throw new Error(
+            throw new SupabaseError(
               "This demo changed in another session. Reload before saving.",
+              409,
+              "40001",
+            );
+          }
+          if (e instanceof SupabaseError && e.code === "23505") {
+            throw new SupabaseError(
+              "That demo URL is already in use.",
+              409,
+              "23505",
             );
           }
           throw e;
@@ -470,11 +541,18 @@ class SupabaseRepository implements Repository {
     const oldP = new Map(before.prospects.map((x) => [x.id, x])),
       newP = new Map(after.prospects.map((x) => [x.id, x]));
 
-    const indRows = await api<any[]>("industries?select=id,slug");
-    const indIds = new Map(indRows.map((x) => [x.slug, x.id]));
-
+    const changedProspects: Array<[string, Prospect]> = [];
     for (const [id, p] of newP) {
       if (JSON.stringify(oldP.get(id)) !== JSON.stringify(p)) {
+        changedProspects.push([id, p]);
+      }
+    }
+
+    if (changedProspects.length > 0) {
+      const indRows = await api<any[]>("industries?select=id,slug");
+      const indIds = new Map(indRows.map((x) => [x.slug, x.id]));
+
+      for (const [id, p] of changedProspects) {
         await api("prospects?on_conflict=id", {
           method: "POST",
           headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
@@ -613,7 +691,11 @@ class SupabaseRepository implements Repository {
 
     for (const id of oldA.keys()) {
       if (!newA.has(id)) {
-        await storage(`object/${BUCKET}/${id}`, { method: "DELETE" });
+        try {
+          await storage(`object/${BUCKET}/${id}`, { method: "DELETE" });
+        } catch (err) {
+          if (!(err instanceof SupabaseError && err.status === 404)) throw err;
+        }
         await api(`demo_assets?id=eq.${id}`, { method: "DELETE" });
       }
     }

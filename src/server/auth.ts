@@ -53,7 +53,9 @@ export async function setAdminSession() {
   (await cookies()).set(COOKIE, issueToken("admin"), {
     httpOnly: true,
     sameSite: "strict",
-    secure: process.env.APP_URL?.startsWith("https://") ?? false,
+    secure:
+      process.env.NODE_ENV === "production" ||
+      (process.env.APP_URL?.startsWith("https://") ?? false),
     path: "/",
     maxAge: 28800,
   });
@@ -93,7 +95,9 @@ export async function unlockDemo(d: Demo) {
   (await cookies()).set(`demo_${d.id}`, issueToken(gateSubject(d), 3600), {
     httpOnly: true,
     sameSite: "strict",
-    secure: process.env.APP_URL?.startsWith("https://") ?? false,
+    secure:
+      process.env.NODE_ENV === "production" ||
+      (process.env.APP_URL?.startsWith("https://") ?? false),
     path: "/",
     maxAge: 3600,
   });
@@ -117,19 +121,31 @@ export function rateLimit(key: string, max = 10, window = 60000) {
 export function sameOrigin(req: Request) {
   const origin = req.headers.get("origin");
   if (!origin) return true;
+  const normalizedOrigin = origin.replace(/\/+$/, "");
   const requestUrl = new URL(req.url);
-  const allowed = new Set([
-    requestUrl.origin,
-    process.env.APP_URL,
-    `${requestUrl.protocol}//${req.headers.get("host")}`,
-  ]);
+  const host = req.headers.get("host");
+  const forwardedHost = req.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
+  const forwardedProto =
+    req.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() ||
+    requestUrl.protocol.replace(":", "");
+  const allowed = new Set<string>([requestUrl.origin]);
+  if (process.env.APP_URL) allowed.add(process.env.APP_URL.replace(/\/+$/, ""));
+  if (process.env.VERCEL_URL) allowed.add(`https://${process.env.VERCEL_URL}`);
+  if (host) {
+    allowed.add(`${requestUrl.protocol}//${host}`);
+    allowed.add(`${forwardedProto}://${host}`);
+  }
+  if (forwardedHost) {
+    allowed.add(`${forwardedProto}://${forwardedHost}`);
+    allowed.add(`https://${forwardedHost}`);
+  }
   if (process.env.NODE_ENV !== "production") {
     const port =
       new URL(process.env.APP_URL || "http://localhost:3000").port || "3000";
     allowed.add(`http://localhost:${port}`);
     allowed.add(`http://127.0.0.1:${port}`);
   }
-  return allowed.has(origin);
+  return allowed.has(normalizedOrigin);
 }
 export function clientKey(req: Request) {
   return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";

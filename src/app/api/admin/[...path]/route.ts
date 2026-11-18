@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { uploadPrivateAsset } from "@/server/supabase-store";
+import { uploadPrivateAsset, SupabaseError } from "@/server/supabase-store";
 import { ZodError } from "zod";
 import { repository, dataDir } from "@/server/store";
 import { isAdmin, sameOrigin, hashPassword } from "@/server/auth";
@@ -240,7 +240,13 @@ async function handle(
     throw new HttpError("Not found", 404);
   } catch (e) {
     const status =
-      e instanceof HttpError ? e.status : e instanceof ZodError ? 400 : 500;
+      e instanceof HttpError
+        ? e.status
+        : e instanceof ZodError
+          ? 400
+          : e instanceof SupabaseError && e.status >= 400 && e.status < 500
+            ? e.status
+            : 500;
     const error =
       e instanceof ZodError
         ? e.issues

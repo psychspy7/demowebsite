@@ -11,6 +11,8 @@ import type { Database, Demo, Asset, Enquiry } from "@/lib/types";
 export interface Repository {
   read(): Promise<Database>;
   transaction<T>(mutate: (db: Database) => T | Promise<T>): Promise<T>;
+  ping?(): Promise<void>;
+  getAvailableDemos?(): Promise<Demo[]>;
   getDemoBySlug?(slug: string): Promise<Demo | null>;
   getDemoById?(id: string): Promise<Demo | null>;
   getAssetById?(id: string): Promise<Asset | null>;
@@ -134,7 +136,11 @@ export async function healthCheck(): Promise<{ ok: boolean; provider: string; de
   const provider = process.env.DATA_PROVIDER || "local";
   try {
     const repo = repository();
-    await repo.read();
+    if (repo.ping) {
+      await repo.ping();
+    } else {
+      await repo.read();
+    }
     return { ok: true, provider };
   } catch (err) {
     return { ok: false, provider, details: (err as Error).message };
