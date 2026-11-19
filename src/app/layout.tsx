@@ -4,18 +4,18 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#212821",
+  themeColor: "#050507",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || "https://demo.thekittycorp.com"),
   title: {
-    default: "KITTY CORP — Demo Studio",
-    template: "%s | KITTY CORP",
+    default: "KITTY CORP — Digital Solutions & Commercial Studio | Build. Automate. Grow.",
+    template: "%s | KITTY CORP Studio",
   },
   description:
-    "Professional website demonstration studio for businesses. Explore 18 industry collections, 88 specialty templates, and build personalized digital experiences.",
-  applicationName: "KITTY CORP Demo Studio",
+    "Premium commercial digital studio by KITTY CORP. Bespoke high-converting websites, business process automation, and enterprise AI integrations. Transparent INR pricing from ₹10,000.",
+  applicationName: "KITTY CORP Digital Studio",
   authors: [{ name: "KITTY CORP", url: "https://thekittycorp.com" }],
   creator: "KITTY CORP",
   publisher: "KITTY CORP",
@@ -30,25 +30,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "KITTY CORP Demo Studio",
-    title: "KITTY CORP — Demo Studio",
+    siteName: "KITTY CORP Digital Studio",
+    title: "KITTY CORP — Digital Solutions & Commercial Studio",
     description:
-      "Transforming business concepts into high-converting digital realities. Explore tailored website demonstrations across 18 major industries.",
+      "Transforming business concepts into high-converting digital realities. Transparent INR pricing, automated workflows, and enterprise AI.",
     images: [
       {
-        url: "/images/restaurant.jpg",
+        url: "/images/office.jpg",
         width: 1200,
         height: 630,
-        alt: "KITTY CORP Demo Studio Preview",
+        alt: "KITTY CORP Studio Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "KITTY CORP — Demo Studio",
+    title: "KITTY CORP — Digital Solutions & Commercial Studio",
     description:
-      "Transforming business concepts into high-converting digital realities.",
-    creator: "@KittyCorphq",
+      "Bespoke websites, workflow automations, and enterprise AI with transparent INR pricing.",
+    creator: "@thekittycorp",
   },
 };
 
@@ -58,8 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="dark">
+      <body className="bg-[#050507] text-zinc-100 antialiased selection:bg-white/20 selection:text-white">
+        {children}
+      </body>
     </html>
   );
 }

@@ -9,7 +9,7 @@ import {
   clientKey,
   rateLimit,
 } from "@/server/auth";
-import { enquirySchema } from "@/lib/validation";
+import { enquirySchema, studioProposalSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -22,6 +22,92 @@ export async function POST(
 
   const { slug, action } = await ctx.params;
   const repo = repository();
+
+  if (slug === "studio") {
+    if (action !== "enquiries") {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
+
+    const key = clientKey(req) + ":studio:" + action;
+    if (!rateLimit(key, 5, 60000))
+      return NextResponse.json(
+        { error: "Please wait a minute before trying again." },
+        { status: 429 },
+      );
+
+    const data = await req.json().catch(() => null);
+    if (!data)
+      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+
+    const b = studioProposalSchema.safeParse(data);
+    if (!b.success)
+      return NextResponse.json(
+        { error: b.error.issues[0].message },
+        { status: 400 },
+      );
+
+    if (
+      b.data.website ||
+      Date.now() - b.data.startedAt < 2000 ||
+      Date.now() - b.data.startedAt > 86400000
+    )
+      return NextResponse.json(
+        { error: "Please wait a moment, then submit again." },
+        { status: 400 },
+      );
+
+    const {
+      name,
+      email,
+      phone,
+      projectType,
+      scopeTier,
+      estimatedBudget,
+      details,
+    } = b.data;
+    const formattedMessage = `[Studio Proposal]\nProject: ${projectType.toUpperCase()}\nTier: ${scopeTier.toUpperCase()}\nEstimated Budget: ₹${estimatedBudget.toLocaleString("en-IN")}\n\n${details}`;
+
+    if (repo.captureEnquiry) {
+      await repo.captureEnquiry({
+        demoId: "",
+        name,
+        email: email || "",
+        phone: phone || "",
+        message: formattedMessage,
+        kind: `Studio Proposal (${projectType}/${scopeTier})`,
+      });
+    } else {
+      await repo.transaction((db) => {
+        const createdAt = new Date().toISOString();
+        db.enquiries.push({
+          id: crypto.randomUUID(),
+          demoId: "",
+          name,
+          email: email || "",
+          phone: phone || "",
+          message: formattedMessage,
+          kind: `Studio Proposal (${projectType}/${scopeTier})`,
+          status: "new",
+          createdAt,
+        });
+        db.analytics.push({
+          id: crypto.randomUUID(),
+          demoId: "",
+          type: "enquiry",
+          createdAt,
+        });
+      });
+    }
+
+    return NextResponse.json(
+      {
+        ok: true,
+        message:
+          "Your project proposal request has been received. Our digital studio team will contact you within 24 hours.",
+      },
+      { status: 201 },
+    );
+  }
 
   // Granular demo fetch avoids loading full workspace snapshot
   const d = repo.getDemoBySlug

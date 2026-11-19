@@ -7,9 +7,20 @@ import {
   Search,
   SlidersHorizontal,
 } from "lucide-react";
-import { templates, industries, getIndustry } from "@/lib/catalogue";
+import {
+  templates,
+  industries,
+  getIndustry,
+  industryHeadings,
+  templateHeadlines,
+} from "@/lib/catalogue";
 import type { Template } from "@/lib/types";
 export function TemplateThumbnail({ template: t }: { template: Template }) {
+  const headline =
+    templateHeadlines[t.id] ||
+    industryHeadings[t.industry] ||
+    "Thoughtfully made. For you.";
+
   return (
     <div
       className={`template-art art-${t.layout}`}
@@ -22,16 +33,7 @@ export function TemplateThumbnail({ template: t }: { template: Template }) {
       <div className="art-body">
         <div className="art-copy">
           <small>{getIndustry(t.industry)?.eyebrow}</small>
-          <strong>
-            {(
-              {
-                medico: "Care that starts with you.",
-                restaurant: "Good food. Better company.",
-                "real-estate": "A place to call your own.",
-                institute: "Your next chapter.",
-              } as Record<string, string>
-            )[t.industry] || "Thoughtfully made. For you."}
-          </strong>
+          <strong>{headline}</strong>
           <span className="art-cta">Discover more ↗</span>
         </div>
         <img src={t.image} alt="" loading="lazy" />

@@ -199,7 +199,9 @@ class SupabaseRepository implements Repository {
           const existingTemplates = await api<{ template_key: string }[]>(
             "templates?select=template_key",
           );
-          if (existingTemplates.length >= templates.length) {
+          const existingKeys = new Set(existingTemplates.map((t) => t.template_key));
+          const allPresent = templates.every((t) => existingKeys.has(t.id));
+          if (allPresent && existingTemplates.length === templates.length) {
             return;
           }
 
@@ -336,7 +338,7 @@ class SupabaseRepository implements Repository {
 
     const enquiries: Enquiry[] = e.map((r) => ({
       id: r.id,
-      demoId: r.demo_id,
+      demoId: r.demo_id || "",
       name: r.name,
       email: r.email,
       phone: r.phone,
@@ -438,7 +440,7 @@ class SupabaseRepository implements Repository {
       body: JSON.stringify({
         p_enquiry: {
           id,
-          demo_id: enquiry.demoId,
+          demo_id: enquiry.demoId || null,
           name: enquiry.name,
           email: enquiry.email || "",
           phone: enquiry.phone || "",
@@ -448,12 +450,14 @@ class SupabaseRepository implements Repository {
           created_at: createdAt,
           consent_at: createdAt,
         },
-        p_event: {
-          id: eventId,
-          demo_id: enquiry.demoId,
-          event_type: "enquiry",
-          created_at: createdAt,
-        },
+        p_event: enquiry.demoId
+          ? {
+              id: eventId,
+              demo_id: enquiry.demoId,
+              event_type: "enquiry",
+              created_at: createdAt,
+            }
+          : null,
       }),
     });
 

@@ -14,11 +14,28 @@ export async function generateMetadata({
   params: Promise<{ industry: string }>;
 }) {
   const { industry } = await params;
+  const i = getIndustry(industry);
+  const base = process.env.APP_URL || "https://demo.thekittycorp.com";
+
+  if (industry === "library") {
+    return {
+      title: "Commercial Template Library & Designs",
+      description:
+        "Explore 54 curated commercial website templates across 18 key industries.",
+      alternates: { canonical: `${base}/library` },
+    };
+  }
+
   return {
-    title:
-      industry === "library"
-        ? "Template library"
-        : getIndustry(industry)?.name || "Not found",
+    title: i
+      ? `${i.name} Website Solutions & Demos`
+      : "Industry Template Not Found",
+    description: i
+      ? `Tailored commercial websites, booking flows, and automation solutions for ${i.name} businesses. Explore interactive previews with transparent INR pricing.`
+      : "Commercial website solutions by KITTY CORP.",
+    alternates: {
+      canonical: `${base}/${industry}`,
+    },
   };
 }
 export default async function IndustryPage({

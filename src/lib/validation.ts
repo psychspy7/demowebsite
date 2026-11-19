@@ -169,8 +169,31 @@ export const enquirySchema = z
     website: z.string().max(100).default(""),
     startedAt: z.number(),
     consent: z.literal(true),
+    demo_id: z.string().optional(),
   })
   .refine(
     (v) => !!v.email || v.phone.replace(/\D/g, "").length >= 7,
     "Provide an email or valid phone number",
   );
+
+export const studioProposalSchema = z
+  .object({
+    name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
+    email,
+    phone,
+    projectType: z.enum(["website", "automation", "ai", "hybrid", "other"]).default("website"),
+    scopeTier: z.enum(["basic", "premium", "advanced", "custom"]).default("premium"),
+    estimatedBudget: z.number().int().nonnegative().default(18000),
+    details: z.string().trim().min(5, "Please provide at least 5 characters about your requirements").max(2000),
+    website: z.string().max(100).default(""),
+    startedAt: z.number(),
+    consent: z.literal(true, {
+      message: "Please consent to being contacted regarding your project.",
+    }),
+  })
+  .refine(
+    (v) => !!v.email || v.phone.replace(/\D/g, "").length >= 7,
+    "Provide either an email or a valid phone number",
+  );
+
+export type StudioProposalInput = z.infer<typeof studioProposalSchema>;
