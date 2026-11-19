@@ -1,21 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#050507",
+  themeColor: "#FCFBF9",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || "https://demo.thekittycorp.com"),
   title: {
-    default: "KITTY CORP — Digital Solutions & Commercial Studio | Build. Automate. Grow.",
-    template: "%s | KITTY CORP Studio",
+    default: "KITTY CORP — Precision Engineering for Ambitious Businesses",
+    template: "%s | KITTY CORP",
   },
   description:
-    "Premium commercial digital studio by KITTY CORP. Bespoke high-converting websites, business process automation, and enterprise AI integrations. Transparent INR pricing from ₹10,000.",
-  applicationName: "KITTY CORP Digital Studio",
+    "Professional website demonstration studio for ambitious enterprises. Explore 18 industry collections, 88 specialty templates, and live responsive previews.",
+  applicationName: "KITTY CORP Demo Studio",
   authors: [{ name: "KITTY CORP", url: "https://thekittycorp.com" }],
   creator: "KITTY CORP",
   publisher: "KITTY CORP",
@@ -23,32 +24,29 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: "./",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "KITTY CORP Digital Studio",
-    title: "KITTY CORP — Digital Solutions & Commercial Studio",
+    siteName: "KITTY CORP Demo Studio",
+    title: "KITTY CORP — Demo Studio",
     description:
-      "Transforming business concepts into high-converting digital realities. Transparent INR pricing, automated workflows, and enterprise AI.",
+      "Transforming business concepts into high-converting digital realities. Explore tailored website demonstrations across 18 major industries.",
     images: [
       {
-        url: "/images/office.jpg",
+        url: "/images/restaurant.jpg",
         width: 1200,
         height: 630,
-        alt: "KITTY CORP Studio Preview",
+        alt: "KITTY CORP Demo Studio Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "KITTY CORP — Digital Solutions & Commercial Studio",
+    title: "KITTY CORP — Demo Studio",
     description:
-      "Bespoke websites, workflow automations, and enterprise AI with transparent INR pricing.",
-    creator: "@thekittycorp",
+      "Transforming business concepts into high-converting digital realities.",
+    creator: "@KittyCorphq",
   },
 };
 
@@ -58,8 +56,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-[#050507] text-zinc-100 antialiased selection:bg-white/20 selection:text-white">
+    <html lang="en">
+      <body className="antialiased font-sans">
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-9V2T4Z9RJP"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (!window.location.pathname.startsWith('/admin')) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-9V2T4Z9RJP', {
+                  page_path: window.location.pathname,
+                });
+              }
+            `,
+          }}
+        />
         {children}
       </body>
     </html>

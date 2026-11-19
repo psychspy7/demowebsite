@@ -1,3 +1,17 @@
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' blob: data: https://*.supabase.co https://thekittycorp.com https://*.google-analytics.com https://www.googletagmanager.com;
+  font-src 'self' data: https://fonts.gstatic.com;
+  connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://www.google-analytics.com https://www.googletagmanager.com;
+  frame-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+`.replace(/\s{2,}/g, " ").trim();
+
 /** @type {import('next').NextConfig} */
 const config = {
   poweredByHeader: false,
@@ -23,6 +37,7 @@ const config = {
       {
         source: "/:path*",
         headers: [
+          { key: "Content-Security-Policy", value: cspHeader },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },

@@ -1,68 +1,99 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { Cat, ArrowUpRight, MessageCircle, Menu, X } from "lucide-react";
 import { OFFICIAL } from "@/lib/catalogue";
 
-export function StudioBrandMark({ className = "w-6 h-6 text-white" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
-      {/* Dynamic Geometric 'K' matching reference visual */}
-      <rect x="4" y="4" width="5" height="24" rx="1.5" fill="currentColor" />
-      <path d="M11 16L22.5 4.5H28L14.5 18L11 16Z" fill="currentColor" />
-      <path d="M12.5 15.5L26 27.5H20.5L9.5 17.5L12.5 15.5Z" fill="currentColor" />
-    </svg>
-  );
-}
-
-export function StudioBrand({ className = "" }: { className?: string }) {
-  return (
-    <Link href="/" className={`inline-flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${className}`}>
-      <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-700/80 flex items-center justify-center text-white group-hover:border-zinc-500 transition-colors shadow-sm">
-        <StudioBrandMark className="w-5 h-5 text-white" />
-      </div>
-      <div className="flex items-center gap-2">
-        <span className="font-bold tracking-wider text-sm text-white font-sans">KITTY CORP</span>
-        <span className="text-zinc-600 text-xs font-light">|</span>
-        <span className="text-[10px] tracking-[0.18em] text-zinc-400 font-semibold uppercase">DIGITAL SOLUTIONS</span>
-      </div>
-    </Link>
-  );
-}
+export const WHATSAPP_NUMBER = "+919241619573";
+export const WHATSAPP_URL =
+  "https://wa.me/919241619573?text=Hello%20Kitty%20Corp%2C%20I%20would%20like%20to%20discuss%20a%20website%20project%20for%20my%20business.";
 
 export function Brand({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
       className={`brand ${light ? "light" : ""}`}
-      aria-label="KITTY CORP Digital Solutions Studio home"
+      aria-label="Kitty Corp home"
     >
-      <span className="brand-mark" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
-        <StudioBrandMark className="w-5 h-5 text-current" />
+      <span className="brand-mark">
+        <Cat size={22} strokeWidth={1.8} />
       </span>
       <span>
         KITTY<span className="brand-weight">CORP</span>
-        <small>DIGITAL SOLUTIONS</small>
+        <small>DEMO STUDIO</small>
       </span>
     </Link>
   );
 }
 
 export function SiteNav() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="site-nav">
       <Brand />
-      <nav aria-label="Main navigation">
+      <nav aria-label="Main navigation" className="nav-desktop">
         <Link href="/#industries">Industries</Link>
-        <Link href="/#designs">Designs</Link>
-        <Link href="/#services">Services</Link>
+        <Link href="/#services">What we do</Link>
         <Link href="/#pricing">Pricing</Link>
-        <Link href="/#calculator">Quote Calculator</Link>
       </nav>
-      <a
-        className="button small dark"
-        href="#proposal-form"
-      >
-        Get In Touch
-      </a>
+      <div className="nav-actions">
+        <a
+          className="button small whatsapp-button"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="WhatsApp Consultation"
+        >
+          <MessageCircle size={15} />
+          <span>WhatsApp</span>
+        </a>
+        <Link className="button small dark nav-admin-link" href="/admin">
+          Open studio <ArrowUpRight size={15} />
+        </Link>
+        <button
+          className="nav-mobile-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
+          type="button"
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="nav-mobile-drawer">
+          <nav aria-label="Mobile navigation">
+            <Link href="/#industries" onClick={() => setIsOpen(false)}>
+              Industries
+            </Link>
+            <Link href="/#services" onClick={() => setIsOpen(false)}>
+              What we do
+            </Link>
+            <Link href="/#pricing" onClick={() => setIsOpen(false)}>
+              Pricing
+            </Link>
+            <a
+              className="button whatsapp-button"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsOpen(false)}
+            >
+              <MessageCircle size={16} /> WhatsApp: {WHATSAPP_NUMBER}
+            </a>
+            <Link
+              className="button dark"
+              href="/admin"
+              onClick={() => setIsOpen(false)}
+            >
+              Open studio <ArrowUpRight size={16} />
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -71,23 +102,21 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <Brand />
-      <p className="brand-signature">Commercial Studio by KITTY CORP</p>
-      <p>Ideas made tangible. Professional business websites &amp; automation solutions.</p>
-      <div className="footer-links-row" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", alignItems: "center" }}>
-        <Link href="/#services">Services</Link>
-        <Link href="/#pricing">Pricing</Link>
-        <Link href="/#calculator">Calculator</Link>
-        <Link href="/library">Catalogue</Link>
+      <p>Precision engineering for ambitious businesses. Brought online with authority.</p>
+      <div className="footer-links">
         <a
-          href={OFFICIAL}
+          href={WHATSAPP_URL}
           target="_blank"
-          rel="noopener noreferrer"
-          className="official-footer-link"
+          rel="noreferrer"
+          className="footer-whatsapp"
         >
-          KITTY CORP Robotics <ArrowUpRight size={14} aria-hidden="true" />
+          <MessageCircle size={16} /> WhatsApp: {WHATSAPP_NUMBER}
+        </a>
+        <a href={OFFICIAL} target="_blank" rel="noreferrer">
+          thekittycorp.com <ArrowUpRight size={16} />
         </a>
       </div>
-      <span>© {new Date().getFullYear()} KITTY CORP · All rights reserved</span>
+      <span>© {new Date().getFullYear()} KITTY CORP. All rights reserved.</span>
     </footer>
   );
 }

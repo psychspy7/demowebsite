@@ -2,336 +2,504 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  Play,
-  Sun,
+  MessageCircle,
+  ShieldCheck,
+  Zap,
+  Sparkles,
+  CheckCircle2,
+  ChevronRight,
+  Layers,
+  Smartphone,
+  Globe,
+  Clock,
+  Workflow,
+  Code2,
+  Check,
 } from "lucide-react";
-import { StudioBrand } from "@/components/brand";
-import { HeroDevicesMockup } from "@/components/hero-devices-mockup";
-import { IndustryRibbon } from "@/components/industry-ribbon";
-import { ServicesGrid } from "@/components/services-grid";
-import { SocialProofStrip } from "@/components/social-proof-strip";
-import { PricingSection } from "@/components/pricing-section";
-import { QuoteCalculator } from "@/components/quote-calculator";
-import { StudioEnquiryForm } from "@/components/studio-enquiry-form";
-import { StudioFooter } from "@/components/studio-footer";
-import { StickyWhatsApp } from "@/components/sticky-whatsapp";
-import { TemplateCard } from "@/components/template-library";
-import { templates, OFFICIAL } from "@/lib/catalogue";
+import {
+  Brand,
+  SiteNav,
+  SiteFooter,
+  WHATSAPP_URL,
+  WHATSAPP_NUMBER,
+} from "@/components/brand";
+import { TemplateLibrary, TemplateThumbnail } from "@/components/template-library";
+import { templates, industries, OFFICIAL } from "@/lib/catalogue";
 
-const studioJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["ProfessionalService", "WebDesignService"],
-      "@id": "https://demo.thekittycorp.com/#studio",
-      name: "KITTY CORP — Digital Solutions & Commercial Studio",
-      alternateName: "Kitty Corp Digital Studio",
-      url: "https://demo.thekittycorp.com",
-      logo: "https://demo.thekittycorp.com/images/office.jpg",
-      image: "https://demo.thekittycorp.com/images/office.jpg",
-      description:
-        "High-performance digital studio crafting premium commercial websites, workflow automations, and bespoke AI integrations with transparent INR-first pricing.",
-      parentOrganization: {
-        "@type": "Organization",
-        name: "KITTY CORP",
-        url: OFFICIAL,
-      },
-      priceRange: "₹10,000 - ₹1,00,000+",
-      currenciesAccepted: "INR",
-      paymentAccepted: "Bank Transfer, UPI, Credit Card",
-      areaServed: [
-        { "@type": "Country", name: "India" },
-        { "@type": "AdministrativeArea", name: "Worldwide" },
-      ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "KITTY CORP Commercial Digital Solutions",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Basic Website Presence",
-              description:
-                "Up to 5 responsive pages, WhatsApp integration, standard on-page SEO, lead capture, and 3 months warranty.",
-            },
-            price: "10000",
-            priceCurrency: "INR",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Premium Commercial Platform",
-              description:
-                "Up to 10 pages, interactive portfolio/catalogue, appointment booking, local SEO, CRM sync, and 6 months maintenance.",
-            },
-            price: "18000",
-            priceCurrency: "INR",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Advanced Platform & Workflow Automation",
-              description:
-                "Dynamic database, client portal, custom APIs, automated workflows, payment gateway, and 12 months SLA support.",
-            },
-            price: "35000",
-            priceCurrency: "INR",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Custom AI & Physical Robotics Integration",
-              description:
-                "Bespoke AI agents, enterprise RAG knowledge pipelines, autonomous workflow automations, and physical-world robotics telemetry bridges.",
-            },
-            price: "Quote-based",
-            priceCurrency: "INR",
-          },
-        ],
-      },
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://demo.thekittycorp.com/#faq",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "What is included in the complimentary website maintenance period?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "All website packages include complimentary maintenance (3 months for Basic, 6 months for Premium, 12 months for Advanced). This covers uptime monitoring, security patching, bug fixes, and minor content updates. Third-party cloud hosting and API usage fees are billed separately at cost.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "What are the scope exclusions in KITTY CORP pricing tiers?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "To ensure 100% price transparency, client-provided assets (copywriting, photography), domain registration, cloud hosting/server compute, paid third-party SaaS/plugin licenses (e.g. Twilio WhatsApp API, OpenAI tokens), and payment gateway transaction commissions (e.g. 2% Razorpay/Stripe) are not included in base build pricing.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How quickly can a commercial website or business automation be launched?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Basic websites typically launch in 5 to 7 business days. Premium solutions take 10 to 14 business days. Advanced platforms and custom AI automations take 3 to 5 weeks depending on custom integration requirements.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How does the 1-click WhatsApp quote process work?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Clients can configure their project type, scope tier, and modular add-ons using our interactive quote calculator. Clicking 'Send Quote via WhatsApp' immediately opens a direct conversation with our engineering team with your exact project specifications and estimated INR budget pre-filled.",
-          },
-        },
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://demo.thekittycorp.com/#website",
-      url: "https://demo.thekittycorp.com",
-      name: "KITTY CORP Digital Solutions",
-      publisher: {
-        "@type": "Organization",
-        name: "KITTY CORP",
-        url: OFFICIAL,
-      },
-    },
-  ],
+  "@type": "SoftwareApplication",
+  name: "KITTY CORP Demo Studio",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "10000",
+    priceCurrency: "INR",
+  },
+  author: {
+    "@type": "Organization",
+    name: "KITTY CORP",
+    url: OFFICIAL,
+  },
+  description:
+    "Bespoke website demonstration studio for ambitious enterprises, high-end practices, and category leaders. 18 industries, 88 blueprints, and sub-second performance.",
 };
 
 export default function Home() {
+  const premierTemplate =
+    templates.find((t) => t.id === "real-estate-1") || templates[0];
+
   return (
-    <div className="min-h-screen bg-[#050507] text-zinc-100 flex flex-col font-sans selection:bg-white/20 selection:text-white">
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(studioJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      {/* Sticky Studio Header */}
-      <header className="sticky top-0 z-40 w-full border-b border-zinc-800/80 bg-[#050507]/80 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-          <StudioBrand />
-
-          {/* Navigation Links */}
-          <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-8 text-xs font-medium text-zinc-300">
-            <a href="#industries" className="hover:text-white transition-colors">
-              Industries
-            </a>
-            <a href="#designs" className="hover:text-white transition-colors">
-              Designs
-            </a>
-            <a href="#services" className="hover:text-white transition-colors">
-              Services
-            </a>
-            <a href="#calculator" className="hover:text-white transition-colors">
-              Automation
-            </a>
-            <a href="#pricing" className="hover:text-white transition-colors">
-              Pricing
-            </a>
-            <a href="#proposal-form" className="hover:text-white transition-colors">
-              About
-            </a>
-          </nav>
-
-          {/* Right Action Controls */}
-          <div className="flex items-center gap-4">
-            <a
-              href="#proposal-form"
-              className="inline-flex items-center gap-1.5 bg-white text-zinc-950 font-semibold px-5 py-2.5 rounded-full hover:bg-zinc-200 transition-colors text-xs shadow-sm"
-            >
-              Get In Touch <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-
-            <button
-              type="button"
-              aria-label="Theme Display"
-              className="w-9 h-9 rounded-full border border-zinc-700/60 bg-zinc-900/60 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
-            >
-              <Sun className="w-4 h-4" />
-            </button>
+      <SiteNav />
+      <main id="main">
+        {/* Apple-Grade Hero Section */}
+        <section className="landing-hero">
+          <div className="hero-copy">
+            <div className="hero-badge">
+              <span className="hero-badge-dot" />
+              <span>KITTY CORP STUDIO · BESPOKE DIGITAL CRAFT</span>
+            </div>
+            <h1>
+              Websites engineered for authority.
+              <br />
+              <span className="hero-gradient-text">Built to convert.</span>
+            </h1>
+            <p className="hero-subtitle">
+              We design and engineer bespoke, sub-second web platforms for ambitious
+              businesses, medical practices, and category leaders. Handcrafted
+              architecture with zero AI slop, instant loading, and measurable conversion.
+            </p>
+            <div className="button-row">
+              <Link className="button dark hero-primary-btn" href="#blueprints">
+                Explore 88 Blueprints <ArrowRight size={17} />
+              </Link>
+              <a
+                className="button whatsapp-button hero-whatsapp-btn"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Chat on WhatsApp"
+              >
+                <MessageCircle size={17} />
+                <span>Chat on WhatsApp ({WHATSAPP_NUMBER})</span>
+              </a>
+            </div>
+            <div className="hero-footnote">
+              <CheckCircle2 size={15} className="footnote-check" />
+              <span>Sub-400ms edge response · 6 months dedicated maintenance included</span>
+            </div>
           </div>
-        </div>
-      </header>
 
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
-          {/* Ambient Dusk Glow Background */}
-          <div className="absolute top-1/4 right-1/4 w-[600px] h-[400px] bg-amber-600/10 rounded-full blur-[140px] pointer-events-none" />
-
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[65vh]">
-              {/* Left Column: Hero Copy */}
-              <div className="lg:col-span-6 flex flex-col justify-center space-y-8 z-10">
-                {/* Eyebrow */}
-                <div className="flex items-center gap-4">
-                  <span className="text-[11px] md:text-xs font-semibold tracking-[0.2em] text-zinc-400 uppercase">
-                    WEBSITE • AUTOMATION • GROWTH
-                  </span>
-                  <div className="h-[1px] bg-zinc-800 flex-1" />
+          {/* Apple Studio Display Showcase Frame */}
+          <div className="hero-composition">
+            <div className="studio-window">
+              <div className="studio-window-bar">
+                <div className="window-dots">
+                  <span className="dot dot-red" />
+                  <span className="dot dot-yellow" />
+                  <span className="dot dot-green" />
                 </div>
-
-                {/* Headline */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.06]">
-                  <span className="sr-only">Build. Automate. Grow.</span>
-                  Build. Automate.<br />
-                  <span className="font-serif italic font-normal text-white">Grow.</span>
-                </h1>
-
-                {/* Subheading */}
-                <p className="text-lg md:text-xl text-zinc-400 max-w-lg leading-relaxed font-normal">
-                  Premium websites, powerful automation and digital solutions — crafted for your business.
-                </p>
-
-                {/* Action CTAs */}
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <a
-                    href="#designs"
-                    className="inline-flex items-center gap-2 bg-white text-zinc-950 font-semibold px-7 py-3.5 rounded-full hover:bg-zinc-200 transition-all text-sm group shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-                  >
-                    Explore Our Solutions
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-
-                  <a
-                    href="#designs"
-                    className="inline-flex items-center gap-2.5 border border-white/20 bg-white/5 backdrop-blur-sm text-white px-6 py-3.5 rounded-full hover:bg-white/10 hover:border-white/30 transition-all text-sm font-medium"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
-                      <Play className="w-2.5 h-2.5 fill-white text-white ml-0.5" />
-                    </div>
-                    Watch Demo
-                  </a>
+                <div className="window-address-pill">
+                  <span className="pill-lock">🔒</span>
+                  <span>demo.thekittycorp.com/{premierTemplate.industry}</span>
                 </div>
-
-                {/* Scroll hint */}
-                <div className="pt-6 flex items-center gap-2 text-xs text-zinc-500 tracking-wider">
-                  <span>Scroll to explore</span>
-                  <div className="w-8 h-[1px] bg-zinc-800" />
+                <div className="window-latency-badge">
+                  <Zap size={11} /> 120ms
                 </div>
               </div>
+              <div className="studio-window-content">
+                <TemplateThumbnail template={premierTemplate} />
+              </div>
+            </div>
 
-              {/* Right Column: 3D Device Mockup */}
-              <div className="lg:col-span-6 relative">
-                <HeroDevicesMockup />
+            {/* Subtle Floating Proof Cards */}
+            <div className="floating-metric-card metric-left">
+              <Sparkles size={16} />
+              <div>
+                <strong>100 / 100</strong>
+                <small>Core Web Vitals</small>
+              </div>
+            </div>
+
+            <div className="floating-metric-card metric-right">
+              <ShieldCheck size={16} />
+              <div>
+                <strong>Enterprise Edge</strong>
+                <small>Global Anycast SLA</small>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Horizontal Industry Ribbon */}
-        <IndustryRibbon />
+        {/* Natural Metric Strip */}
+        <section className="service-strip" aria-label="Key Performance Indicators">
+          <div className="strip-item">
+            <span className="strip-number">88</span>
+            <span className="strip-label">Production Blueprints</span>
+          </div>
+          <div className="strip-divider" />
+          <div className="strip-item">
+            <span className="strip-number">18</span>
+            <span className="strip-label">Major Industries</span>
+          </div>
+          <div className="strip-divider" />
+          <div className="strip-item">
+            <span className="strip-number">&lt; 400ms</span>
+            <span className="strip-label">Global Edge Latency</span>
+          </div>
+          <div className="strip-divider" />
+          <div className="strip-item">
+            <span className="strip-number">6 Mo</span>
+            <span className="strip-label">Complimentary Support</span>
+          </div>
+        </section>
 
-        {/* 3-Pillar Services Grid */}
-        <div className="sr-only">Services: Premium Websites, Business Automation, AI Solutions</div>
-        <ServicesGrid />
-
-        {/* Flagship Designs Showcase (#designs) */}
-        <section id="designs" className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-800/80">
-            <div className="space-y-4 max-w-2xl">
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold tracking-widest text-zinc-400 uppercase">
-                  FLAGSHIP ARCHITECTURES
-                </span>
-                <div className="w-12 h-[1px] bg-zinc-800" />
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-                Curated Flagships across <span className="font-serif italic font-normal text-white">18 Industries.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg">
-                Editorial, Split, and Immersive designs engineered with authentic business copy, real pricing, and working conversion routes.
-              </p>
-            </div>
+        {/* Interactive Industry Explorer Section */}
+        <section id="industries" className="section-wrap">
+          <div className="section-heading">
             <div>
-              <Link
-                href="/library"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/10 px-6 py-3 rounded-full text-xs md:text-sm font-medium transition-all"
-              >
-                Explore All 54 Designs <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              <span className="eyebrow">01 / TAILORED ARCHITECTURE</span>
+              <h2>
+                Engineered for your industry.
+                <br />
+                <span className="heading-sub">Built around how your clients buy.</span>
+              </h2>
             </div>
+            <p>
+              Different businesses demand distinct conversion funnels. Select your
+              domain to explore targeted blueprints with pre-built booking, menus, or
+              inquiry flows.
+            </p>
+          </div>
+          <div className="industry-grid">
+            {industries.map((i, n) => (
+              <Link href={`/${i.id}`} key={i.id} className="industry-link">
+                <span className="industry-index">
+                  {String(n + 1).padStart(2, "0")}
+                </span>
+                <h3>{i.name}</h3>
+                <ArrowUpRight size={18} />
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Master Template Library & Live Preview Section */}
+        <section id="blueprints" className="section-wrap showcase">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">02 / INTERACTIVE BLUEPRINT SUITE</span>
+              <h2>
+                Explore 88 production blueprints.
+                <br />
+                <span className="heading-sub">Test-drive responsive viewports live.</span>
+              </h2>
+            </div>
+            <a
+              className="text-link"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Request a custom prototype <ArrowUpRight size={17} />
+            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
-            {["medico-1", "restaurant-2", "real-estate-1"].map((id) => {
-              const t = templates.find((tpl) => tpl.id === id);
-              if (!t) return null;
-              return <TemplateCard key={id} template={t} />;
-            })}
-          </div>
+          {/* Full Interactive Template Library with Live Preview Modal */}
+          <TemplateLibrary />
 
-          <p className="text-center text-xs text-zinc-500 pt-8">
-            Curated flagship concepts with bespoke copy, team rosters, and real pricing.
+          <p className="caption">
+            All blueprints are functional prototypes running on Next.js 15 and Supabase.
+            Content and imagery are illustrative concepts tailored for client demonstration.
           </p>
         </section>
 
-        {/* Social Proof Strip */}
-        <SocialProofStrip />
+        {/* The Architectural Standard (Bento Grid) */}
+        <section id="services" className="services-section">
+          <div className="section-wrap">
+            <span className="eyebrow">03 / THE ARCHITECTURAL STANDARD</span>
+            <div className="section-heading">
+              <h2>
+                Why category leaders choose
+                <br />
+                <span className="heading-sub">KITTY CORP over generic agencies.</span>
+              </h2>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="button dark"
+              >
+                Discuss your requirements <ArrowUpRight size={17} />
+              </a>
+            </div>
+            <div className="bento-grid">
+              <article className="bento-card bento-featured">
+                <div className="bento-icon-wrap">
+                  <Code2 size={24} />
+                </div>
+                <h3>Bespoke Next.js 15 & Turbopack Core</h3>
+                <p>
+                  Zero bloated WordPress plugins, zero sluggish builders. Every line of
+                  TypeScript is handwritten for sub-second page transitions, maximum
+                  Google Core Web Vitals, and effortless long-term maintainability.
+                </p>
+                <ul className="bento-points">
+                  <li><Check size={14} /> Server-side rendered for instant First Contentful Paint</li>
+                  <li><Check size={14} /> Clean HTML5 semantic markup optimized for organic SEO</li>
+                  <li><Check size={14} /> Zero client-side bloat or layout shifts</li>
+                </ul>
+              </article>
 
-        {/* INR-First Pricing Architecture */}
-        <PricingSection />
+              <article className="bento-card">
+                <div className="bento-icon-wrap">
+                  <Workflow size={24} />
+                </div>
+                <h3>High-Conversion Lead Funnels</h3>
+                <p>
+                  Built-in frictionless WhatsApp booking flows, appointment scheduling,
+                  and direct inquiry routing that turn casual visitors into paying clients.
+                </p>
+              </article>
 
-        {/* Interactive Quote Calculator */}
-        <QuoteCalculator />
+              <article className="bento-card">
+                <div className="bento-icon-wrap">
+                  <Globe size={24} />
+                </div>
+                <h3>Enterprise Edge Infrastructure</h3>
+                <p>
+                  Deployed on Vercel Anycast edge network with Supabase PostgreSQL,
+                  automatic SSL, and bank-grade data security with 99.99% uptime.
+                </p>
+              </article>
 
-        {/* Direct Studio Enquiry Form */}
-        <StudioEnquiryForm />
+              <article className="bento-card bento-wide">
+                <div className="bento-icon-wrap">
+                  <ShieldCheck size={24} />
+                </div>
+                <div className="bento-wide-content">
+                  <div>
+                    <h3>6 Months of Dedicated Engineering Support</h3>
+                    <p>
+                      Launch is just day one. Every engagement includes six months of
+                      complimentary performance monitoring, security patches, and scope-aligned
+                      refinements so your digital presence remains flawless.
+                    </p>
+                  </div>
+                  <div className="bento-badge-pill">
+                    <CheckCircle2 size={16} /> Guaranteed Peace of Mind
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 4-Step Production Process */}
+        <section className="section-wrap process">
+          <div>
+            <span className="eyebrow">04 / THE PRODUCTION PIPELINE</span>
+            <h2>
+              From concept to live platform.
+              <br />
+              <span className="heading-sub">Disciplined engineering at every stage.</span>
+            </h2>
+            <p>
+              We eliminate endless design rounds with working interactive prototypes,
+              transparent milestone reviews, and rapid production deployment.
+            </p>
+          </div>
+          <div className="process-steps">
+            {[
+              [
+                "01",
+                "Discovery & Scope",
+                "We analyze your business model, customer journey, and conversion targets.",
+              ],
+              [
+                "02",
+                "Working Prototype",
+                "We provide a live, clickable demo within 72 hours for tangible alignment.",
+              ],
+              [
+                "03",
+                "Production Build",
+                "We engineer clean frontend code, database schemas, and lead integrations.",
+              ],
+              [
+                "04",
+                "Launch & Guardrails",
+                "Live deployment on your custom domain backed by 6 months of active support.",
+              ],
+            ].map(([n, t, p]) => (
+              <div key={n} className="process-step-item">
+                <span className="step-num">{n}</span>
+                <div className="step-info">
+                  <h3>{t}</h3>
+                  <p>{p}</p>
+                </div>
+                <ChevronRight size={18} className="step-chevron" />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Transparent Investment Section */}
+        <section id="pricing" className="section-wrap pricing-section">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">05 / TRANSPARENT INVESTMENT</span>
+              <h2>
+                Predictable scope.
+                <br />
+                <span className="heading-sub">Exceptional return on investment.</span>
+              </h2>
+            </div>
+            <p>
+              Direct, milestone-based pricing with zero hidden fees. Clear deliverables
+              shaped around your specific commercial goals.
+            </p>
+          </div>
+          <div className="pricing-grid">
+            <article className="pricing-card">
+              <span className="pricing-tier-label">Foundation Platform</span>
+              <div className="pricing-amount">
+                <h3>From ₹10,000</h3>
+                <small>One-time investment</small>
+              </div>
+              <p>
+                A high-speed, precision-crafted foundation designed for professional
+                practices, boutiques, and emerging businesses.
+              </p>
+              <ul className="pricing-features">
+                <li><Check size={14} /> Bespoke multi-section responsive architecture</li>
+                <li><Check size={14} /> Direct WhatsApp booking & lead capture</li>
+                <li><Check size={14} /> Sub-400ms global edge hosting configuration</li>
+                <li><Check size={14} /> 6 months complimentary maintenance</li>
+              </ul>
+              <a
+                className="button outline-btn pricing-action-btn"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Start with Foundation <ArrowUpRight size={16} />
+              </a>
+            </article>
+
+            <article className="pricing-card featured-pricing-card">
+              <div className="featured-ribbon">Most Selected by Growing Brands</div>
+              <span className="pricing-tier-label">Custom Growth Studio</span>
+              <div className="pricing-amount">
+                <h3>₹18,000 – ₹25,000</h3>
+                <small>Comprehensive deployment</small>
+              </div>
+              <p>
+                A multi-route web platform with dedicated inquiry workflows, interactive
+                catalogs, and full SEO search engine indexing.
+              </p>
+              <ul className="pricing-features">
+                <li><Check size={14} /> Complete multi-page experience (up to 8 pages)</li>
+                <li><Check size={14} /> Dynamic template showcase / menu / portfolio</li>
+                <li><Check size={14} /> Automated lead management & Supabase store</li>
+                <li><Check size={14} /> Google Analytics 4 & Search Console setup</li>
+                <li><Check size={14} /> 6 months dedicated performance warranty</li>
+              </ul>
+              <a
+                className="button dark pricing-action-btn"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Discuss Growth Scope <ArrowUpRight size={16} />
+              </a>
+            </article>
+
+            <article className="pricing-card">
+              <span className="pricing-tier-label">Bespoke Enterprise</span>
+              <div className="pricing-amount">
+                <h3>₹35,000+</h3>
+                <small>Tailored systems</small>
+              </div>
+              <p>
+                Full-stack custom software, client portals, complex workflow automations,
+                and high-scale digital ecosystems.
+              </p>
+              <ul className="pricing-features">
+                <li><Check size={14} /> Tailored full-stack application logic</li>
+                <li><Check size={14} /> Multi-user authenticated dashboards</li>
+                <li><Check size={14} /> Custom CRM / API webhooks & automation</li>
+                <li><Check size={14} /> Priority SLA support & architectural reviews</li>
+              </ul>
+              <a
+                className="button outline-btn pricing-action-btn"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Request Enterprise Proposal <ArrowUpRight size={16} />
+              </a>
+            </article>
+          </div>
+
+          {/* Maintenance & Reliability Banner */}
+          <div className="maintenance-banner">
+            <div className="maintenance-icon-badge">
+              <Layers size={26} />
+            </div>
+            <div className="maintenance-copy">
+              <h3>Every deployment includes 6 months of active care.</h3>
+              <p>
+                We handle core updates, security patches, uptime monitoring, and speed
+                tuning so you can focus entirely on running your business.
+              </p>
+            </div>
+            <div className="maintenance-tags">
+              <span><Check size={15} /> 99.99% Uptime Monitoring</span>
+              <span><Check size={15} /> Continuous Security Patches</span>
+            </div>
+          </div>
+        </section>
+
+        {/* High-Impact Closing Consultation CTA */}
+        <section className="closing-cta">
+          <span className="eyebrow">BEGIN YOUR NEXT DIGITAL CHAPTER</span>
+          <h2>
+            Exceptional businesses begin with
+            <br />
+            <span className="cta-highlight">a focused conversation.</span>
+          </h2>
+          <p className="closing-cta-sub">
+            Whether you need a bespoke website or an intelligent business platform, our
+            engineering team is ready to demonstrate what is possible.
+          </p>
+          <div className="closing-cta-actions">
+            <a
+              className="button dark cta-large-btn"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={18} /> Chat on WhatsApp ({WHATSAPP_NUMBER})
+            </a>
+            <a
+              className="button outline-btn cta-secondary-btn"
+              href={OFFICIAL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visit thekittycorp.com <ArrowUpRight size={17} />
+            </a>
+          </div>
+        </section>
       </main>
-
-      {/* Studio Footer */}
-      <StudioFooter />
-
-      {/* Sticky WhatsApp Trigger */}
-      <StickyWhatsApp />
-    </div>
+      <SiteFooter />
+    </>
   );
 }
