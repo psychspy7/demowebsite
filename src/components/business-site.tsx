@@ -159,8 +159,8 @@ export function BusinessSite({
           <strong>{d.businessName}</strong>
           <p>{d.footer}</p>
         </div>
-        <a href={OFFICIAL} target="_blank" rel="noreferrer">
-          Website concept by KITTY CORP <ArrowUpRight size={13} />
+        <a href={OFFICIAL} target="_blank" rel="noopener noreferrer" title="Visit KITTY CORP official website">
+          A website experience by KITTY CORP <ArrowUpRight size={13} aria-hidden="true" />
         </a>
       </footer>
       {whatsapp && (

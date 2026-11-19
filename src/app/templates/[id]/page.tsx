@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { BusinessSite } from "@/components/business-site";
-import { getTemplate, createDemo, toPublic, templates } from "@/lib/catalogue";
+import { getTemplate, createDemo, toPublic, templates, OFFICIAL } from "@/lib/catalogue";
 export function generateStaticParams() {
   return templates.map((t) => ({ id: t.id }));
 }
@@ -33,12 +33,14 @@ export default async function TemplatePage({
           <ArrowLeft size={16} /> Back to collection
         </Link>
         <span>{t.name}</span>
-        <Link
+        <a
           className="button small dark"
-          href={`/admin/demos/new?template=${t.id}`}
+          href={`${OFFICIAL}/projects?service=Website`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Use this template <ArrowUpRight size={16} />
-        </Link>
+          Build this with KITTY CORP <ArrowUpRight size={16} />
+        </a>
       </div>
       <BusinessSite demo={toPublic(d)} mode="template" />
     </>

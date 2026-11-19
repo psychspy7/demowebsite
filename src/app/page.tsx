@@ -64,8 +64,8 @@ export default function Home() {
               <Link className="button dark" href="#industries">
                 Find your industry <ArrowRight size={18} />
               </Link>
-              <a className="text-link" href={OFFICIAL}>
-                Let’s build something <ArrowUpRight size={17} />
+              <a className="text-link" href={OFFICIAL} target="_blank" rel="noopener noreferrer">
+                Visit KITTY CORP Official Website <ArrowUpRight size={17} />
               </a>
             </div>
             <div className="hero-footnote">
@@ -306,8 +306,8 @@ export default function Home() {
                 <span className="eyebrow">{h}</span>
                 <h3>{p}</h3>
                 <p>{t}</p>
-                <a className="text-link" href={OFFICIAL}>
-                  Discuss your project <ArrowUpRight size={18} />
+                <a className="text-link" href={`${OFFICIAL}/pricing`} target="_blank" rel="noopener noreferrer">
+                  Discuss your project on KITTY CORP <ArrowUpRight size={18} />
                 </a>
               </article>
             ))}
@@ -341,8 +341,8 @@ export default function Home() {
             <br />
             starts with <em>a conversation.</em>
           </h2>
-          <a className="button dark" href={OFFICIAL}>
-            Talk to KITTY CORP <ArrowUpRight size={18} />
+          <a className="button dark" href={`${OFFICIAL}/contact`} target="_blank" rel="noopener noreferrer">
+            Visit KITTY CORP Official Website <ArrowUpRight size={18} />
           </a>
         </section>
       </main>
