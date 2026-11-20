@@ -49,9 +49,16 @@ export function SiteNav() {
           <MessageCircle size={15} />
           <span>WhatsApp</span>
         </a>
-        <Link className="button small dark nav-admin-link" href="/admin">
-          Open studio <ArrowUpRight size={15} />
-        </Link>
+        <a
+          className="button small dark nav-official-link"
+          href={OFFICIAL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Visit official KITTY CORP website"
+        >
+          <span>thekittycorp.com</span>
+          <ArrowUpRight size={14} />
+        </a>
         <button
           className="nav-mobile-toggle"
           onClick={() => setIsOpen(!isOpen)}
@@ -84,13 +91,15 @@ export function SiteNav() {
             >
               <MessageCircle size={16} /> WhatsApp: {WHATSAPP_NUMBER}
             </a>
-            <Link
+            <a
               className="button dark"
-              href="/admin"
+              href={OFFICIAL}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setIsOpen(false)}
             >
-              Open studio <ArrowUpRight size={16} />
-            </Link>
+              Visit thekittycorp.com <ArrowUpRight size={16} />
+            </a>
           </nav>
         </div>
       )}

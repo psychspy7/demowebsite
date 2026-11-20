@@ -1514,8 +1514,8 @@ export function createDemo(templateId: string, businessName: string): Demo {
       favicon: "",
     },
     contact: {
-      phone: "+91 98200 12345",
-      whatsapp: "+91 98200 12345",
+      phone: "+91 9241619573",
+      whatsapp: "+91 9241619573",
       whatsappMessage: `Hello, I would like to enquire about ${t.specialty} services.`,
       email: "contact@thekittycorp.com",
       address:
@@ -1675,7 +1675,7 @@ export function isAvailable(d: Demo, now = Date.now()) {
 }
 
 export function whatsappUrl(number: string, message: string) {
-  const digits = number.replace(/\D/g, "");
+  const digits = (number || "").replace(/\D/g, "");
   return digits.length >= 7 && digits.length <= 15
     ? `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
     : "";

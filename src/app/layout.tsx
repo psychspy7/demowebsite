@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { StickyWhatsApp } from "@/components/sticky-whatsapp";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -79,6 +80,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <StickyWhatsApp />
       </body>
     </html>
   );
