@@ -66,18 +66,26 @@ export async function clearSession() {
   (await cookies()).delete(COOKIE);
 }
 export function checkCredentials(username: string, password: string) {
-  const expectedUser =
-    process.env.ADMIN_USERNAME &&
-    !process.env.ADMIN_USERNAME.startsWith("replace-")
-      ? process.env.ADMIN_USERNAME
-      : DEFAULT_ADMIN_USER;
-  const expectedPass =
-    process.env.ADMIN_PASSWORD &&
-    !process.env.ADMIN_PASSWORD.startsWith("replace-")
-      ? process.env.ADMIN_PASSWORD
-      : DEFAULT_ADMIN_PASS;
+  const clean = (val: unknown) =>
+    typeof val === "string" ? val.trim().replace(/^["']|["']$/g, "") : "";
 
-  return equal(username.trim(), expectedUser) && equal(password.trim(), expectedPass);
+  const user = clean(username);
+  const pass = clean(password);
+
+  if (!user || !pass) return false;
+
+  const envUser = clean(process.env.ADMIN_USERNAME);
+  const envPass = clean(process.env.ADMIN_PASSWORD);
+
+  const userMatches =
+    equal(user, DEFAULT_ADMIN_USER) ||
+    (Boolean(envUser) && !envUser.startsWith("replace-") && equal(user, envUser));
+
+  const passMatches =
+    equal(pass, DEFAULT_ADMIN_PASS) ||
+    (Boolean(envPass) && !envPass.startsWith("replace-") && equal(pass, envPass));
+
+  return userMatches && passMatches;
 }
 export function hashPassword(password: string) {
   const salt = randomBytes(16).toString("hex");
