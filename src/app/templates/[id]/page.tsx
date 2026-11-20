@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, MessageCircle, Wand2 } from "lucide-react";
 import { BusinessSite } from "@/components/business-site";
 import { getTemplate, createDemo, toPublic, templates } from "@/lib/catalogue";
 
@@ -43,19 +43,30 @@ export default async function TemplatePage({
     <>
       {!isEmbed && (
         <div className="template-toolbar">
-          <Link href={`/${t.industry}`}>
+          <Link href={`/${t.industry}`} className="template-back-link">
             <ArrowLeft size={16} /> Back to collection
           </Link>
-          <span>{t.name}</span>
-          <a
-            className="button small dark template-enquiry-cta"
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle size={15} />
-            Enquire via WhatsApp <ArrowUpRight size={15} />
-          </a>
+          <span className="template-toolbar-name">{t.name}</span>
+          <div className="template-toolbar-actions">
+            <Link
+              className="button small dark template-customize-cta"
+              href={`/admin/demos/new?template=${t.id}`}
+              title="Customize and generate client prototype"
+            >
+              <Wand2 size={14} />
+              <span>Customize Blueprint</span>
+            </Link>
+            <a
+              className="button small whatsapp-button template-enquiry-cta"
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={14} />
+              <span>WhatsApp</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </div>
         </div>
       )}
       <BusinessSite demo={toPublic(d)} mode="template" />

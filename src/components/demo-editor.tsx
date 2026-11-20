@@ -18,6 +18,7 @@ import {
   Upload,
   Copy,
   Check,
+  MessageCircle,
 } from "lucide-react";
 import type {
   AdminDemo,
@@ -118,6 +119,18 @@ export function DemoEditor({
           </div>
         </div>
         <div className="button-row">
+          <a
+            className="button small whatsapp-button"
+            href={`https://wa.me/?text=${encodeURIComponent(
+              `Hello! Here is your bespoke website prototype by KITTY CORP: ${typeof location !== "undefined" ? location.origin : ""}/preview/${d.slug}`
+            )}`}
+            target="_blank"
+            rel="noreferrer"
+            title="Share prototype link with client on WhatsApp"
+          >
+            <MessageCircle size={15} />
+            <span>Send to Client</span>
+          </a>
           <a
             className="button small"
             href={`/preview/${d.slug}`}

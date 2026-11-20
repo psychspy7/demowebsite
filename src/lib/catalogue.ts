@@ -404,8 +404,44 @@ const flagshipStyles: {
   },
 ];
 
-export const templates: Template[] = industries.flatMap((industry) =>
-  industry.specialties.map((specialty, j) => {
+export const industryImagePools: Record<string, string[]> = {
+  "real-estate": ["/images/property.jpg", "/images/interior.jpg", "/images/office.jpg", "/images/hotel.jpg", "/images/event.jpg"],
+  "medico": ["/images/medical.jpg", "/images/office.jpg", "/images/interior.jpg", "/images/fitness.jpg", "/images/salon.jpg"],
+  "restaurant": ["/images/restaurant.jpg", "/images/hotel.jpg", "/images/event.jpg", "/images/interior.jpg", "/images/retail.jpg"],
+  "cafe": ["/images/restaurant.jpg", "/images/interior.jpg", "/images/retail.jpg", "/images/event.jpg", "/images/hotel.jpg"],
+  "hotel": ["/images/hotel.jpg", "/images/interior.jpg", "/images/property.jpg", "/images/restaurant.jpg", "/images/travel.jpg"],
+  "fitness": ["/images/fitness.jpg", "/images/interior.jpg", "/images/event.jpg", "/images/office.jpg", "/images/medical.jpg"],
+  "gym": ["/images/fitness.jpg", "/images/interior.jpg", "/images/medical.jpg", "/images/event.jpg", "/images/auto.jpg"],
+  "salon": ["/images/salon.jpg", "/images/interior.jpg", "/images/event.jpg", "/images/retail.jpg", "/images/hotel.jpg"],
+  "spa": ["/images/salon.jpg", "/images/interior.jpg", "/images/hotel.jpg", "/images/event.jpg", "/images/travel.jpg"],
+  "legal": ["/images/office.jpg", "/images/interior.jpg", "/images/property.jpg", "/images/education.jpg", "/images/event.jpg"],
+  "finance": ["/images/office.jpg", "/images/property.jpg", "/images/interior.jpg", "/images/education.jpg", "/images/industry.jpg"],
+  "institute": ["/images/education.jpg", "/images/office.jpg", "/images/interior.jpg", "/images/event.jpg", "/images/property.jpg"],
+  "education": ["/images/education.jpg", "/images/office.jpg", "/images/interior.jpg", "/images/event.jpg", "/images/logistics.jpg"],
+  "logistics": ["/images/logistics.jpg", "/images/auto.jpg", "/images/industry.jpg", "/images/office.jpg", "/images/travel.jpg"],
+  "auto": ["/images/auto.jpg", "/images/logistics.jpg", "/images/industry.jpg", "/images/office.jpg", "/images/travel.jpg"],
+  "interior": ["/images/interior.jpg", "/images/property.jpg", "/images/hotel.jpg", "/images/office.jpg", "/images/event.jpg"],
+  "retail": ["/images/retail.jpg", "/images/interior.jpg", "/images/event.jpg", "/images/restaurant.jpg", "/images/hotel.jpg"],
+  "travel": ["/images/travel.jpg", "/images/hotel.jpg", "/images/event.jpg", "/images/restaurant.jpg", "/images/auto.jpg"],
+  "event": ["/images/event.jpg", "/images/hotel.jpg", "/images/restaurant.jpg", "/images/interior.jpg", "/images/travel.jpg"],
+  "industry": ["/images/industry.jpg", "/images/logistics.jpg", "/images/auto.jpg", "/images/office.jpg", "/images/interior.jpg"],
+};
+
+export function getIndustryImagePool(industryId: string): string[] {
+  return (
+    industryImagePools[industryId] || [
+      "/images/office.jpg",
+      "/images/interior.jpg",
+      "/images/property.jpg",
+      "/images/event.jpg",
+      "/images/restaurant.jpg",
+    ]
+  );
+}
+
+export const templates: Template[] = industries.flatMap((industry) => {
+  const pool = getIndustryImagePool(industry.id);
+  return industry.specialties.map((specialty, j) => {
     const style = flagshipStyles[j % 3];
     return {
       id: `${industry.id}-${j + 1}`,
@@ -415,11 +451,11 @@ export const templates: Template[] = industries.flatMap((industry) =>
       layout: style.layout,
       color: industry.color,
       font: style.font,
-      image: `/images/${industry.image}.jpg`,
+      image: pool[j % pool.length],
       description: `${style.descPrefix} for ${specialty.toLowerCase()}.`,
     };
-  }),
-);
+  });
+});
 
 export function getIndustry(id: string) {
   return industries.find((i) => i.id === id);
@@ -1494,6 +1530,7 @@ export function createDemo(templateId: string, businessName: string): Demo {
     industryHeadings[industry.id] ||
     "Thoughtfully made. For you.";
   const aboutText = industryAboutText[industry.id] || industry.description;
+  const pool = getIndustryImagePool(industry.id);
 
   const d: Demo = {
     id: crypto.randomUUID(),
@@ -1553,8 +1590,10 @@ export function createDemo(templateId: string, businessName: string): Demo {
     },
     settings: { expiresAt: "", passwordHash: "", showDemoLabel: true },
     sections: [
-      makeSection("about", "A little about us", t.image),
-      ...industry.sections.map(([kind, h]) => makeSection(kind, h, t.image)),
+      makeSection("about", "A little about us", pool[1 % pool.length]),
+      ...industry.sections.map(([kind, h], idx) =>
+        makeSection(kind, h, pool[(idx + 2) % pool.length]),
+      ),
       makeSection("contact", "Let’s start a conversation"),
     ],
     footer: `© ${new Date().getFullYear()} ${businessName} · Designed & Developed by KITTY CORP Digital Solutions.`,
@@ -1564,26 +1603,26 @@ export function createDemo(templateId: string, businessName: string): Demo {
     if (["services", "catalogue", "pricing"].includes(s.kind)) {
       s.description = `${t.specialty} curated offerings, transparent pricing and service packages.`;
       const offeringsList = industryOfferings[industry.id] || [];
-      s.items = offeringsList.map(([title, text, category, price]) => ({
+      s.items = offeringsList.map(([title, text, category, price], itemIdx) => ({
         id: crypto.randomUUID(),
         title,
         text,
         price,
         category,
-        image: t.image,
+        image: pool[itemIdx % pool.length],
         link: "#enquire",
       }));
     } else if (s.kind === "team") {
       s.description =
         "Our dedicated team of industry specialists and professionals.";
       const teamList = industryTeams[industry.id] || [];
-      s.items = teamList.map(([title, text, category]) => ({
+      s.items = teamList.map(([title, text, category], itemIdx) => ({
         id: crypto.randomUUID(),
         title,
         text,
         price: "",
         category,
-        image: t.image,
+        image: pool[(itemIdx + 1) % pool.length],
         link: "#enquire",
       }));
     } else if (s.kind === "faq") {
@@ -1622,7 +1661,7 @@ export function createDemo(templateId: string, businessName: string): Demo {
           text: "Curated architectural presentation",
           price: "",
           category: "Gallery",
-          image: t.image,
+          image: pool[0],
           link: "",
         },
         {
@@ -1631,7 +1670,7 @@ export function createDemo(templateId: string, businessName: string): Demo {
           text: "Uncompromising attention to quality",
           price: "",
           category: "Gallery",
-          image: t.image,
+          image: pool[1 % pool.length],
           link: "",
         },
         {
@@ -1640,7 +1679,7 @@ export function createDemo(templateId: string, businessName: string): Demo {
           text: "Designed for comfort and distinction",
           price: "",
           category: "Gallery",
-          image: t.image,
+          image: pool[2 % pool.length],
           link: "",
         },
       ];

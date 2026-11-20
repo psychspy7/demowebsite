@@ -28,6 +28,7 @@ import {
   Check,
   BarChart3,
   Upload,
+  MessageCircle,
 } from "lucide-react";
 import { Brand } from "./brand";
 import { TemplateLibrary, TemplateThumbnail } from "./template-library";
@@ -91,11 +92,12 @@ export function AdminApp() {
   }, [toast]);
   useEffect(() => {
     setMobile(false);
-    if (page === "demos" && path[1] === "new" && query.get("template")) {
-      const t = getTemplate(query.get("template")!);
+    const templateParam = query.get("template");
+    if (templateParam) {
+      const t = getTemplate(templateParam);
       if (t) setSelected(t);
     }
-  }, [page, path[1], query]);
+  }, [page, path, query]);
   useEffect(() => {
     if (share)
       QRCode.toDataURL(`${location.origin}/preview/${share.slug}`, {
@@ -398,11 +400,22 @@ export function AdminApp() {
             {typeof location !== "undefined" ? location.origin : ""}/preview/
             {share.slug}
           </div>
-          <div className="button-row">
+          <div className="button-row" style={{ flexWrap: "wrap", gap: "10px" }}>
             <button className="button dark" onClick={() => copy(share)}>
               <Copy size={16} />
-              Copy URL
+              Copy Prototype URL
             </button>
+            <a
+              className="button whatsapp-button"
+              href={`https://wa.me/?text=${encodeURIComponent(
+                `Hello! Here is your bespoke website prototype designed by KITTY CORP: ${typeof location !== "undefined" ? location.origin : ""}/preview/${share.slug}`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={16} />
+              Send to Client via WhatsApp
+            </a>
             <a className="button" href={qr} download={`${share.slug}-qr.png`}>
               <Download size={16} />
               Download QR

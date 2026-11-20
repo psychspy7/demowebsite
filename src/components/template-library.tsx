@@ -10,6 +10,7 @@ import {
   Eye,
   Sparkles,
   ArrowUpDown,
+  Wand2,
 } from "lucide-react";
 import { templates, industries, getIndustry } from "@/lib/catalogue";
 import type { Template } from "@/lib/types";
@@ -109,6 +110,15 @@ export function TemplateCard({
             <Eye size={14} />
             <span>Preview</span>
           </button>
+
+          <Link
+            href={`/admin/demos/new?template=${t.id}`}
+            className="button small dark customize-btn"
+            title={`Customize ${t.specialty} for client`}
+          >
+            <Wand2 size={13} />
+            <span className="desktop-only-text">Customize</span>
+          </Link>
 
           {onSelect ? (
             <button

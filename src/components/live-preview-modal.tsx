@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Link from "next/link";
 import {
   X,
@@ -9,10 +9,11 @@ import {
   Smartphone,
   MessageCircle,
   ExternalLink,
-  Loader2,
+  Wand2,
 } from "lucide-react";
 import type { Template } from "@/lib/types";
-import { getIndustry } from "@/lib/catalogue";
+import { getIndustry, createDemo, toPublic } from "@/lib/catalogue";
+import { BusinessSite } from "@/components/business-site";
 
 export type DeviceViewport = "desktop" | "tablet" | "mobile";
 
@@ -23,12 +24,10 @@ interface LivePreviewModalProps {
 
 export function LivePreviewModal({ template, onClose }: LivePreviewModalProps) {
   const [device, setDevice] = useState<DeviceViewport>("desktop");
-  const [loading, setLoading] = useState(true);
   const backdropRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!template) return;
-    setLoading(true);
 
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -47,7 +46,12 @@ export function LivePreviewModal({ template, onClose }: LivePreviewModalProps) {
     };
   }, [template, onClose]);
 
-  if (!template) return null;
+  const demo = useMemo(() => {
+    if (!template) return null;
+    return toPublic(createDemo(template.id, `${template.specialty} / Studio Prototype`));
+  }, [template]);
+
+  if (!template || !demo) return null;
 
   const whatsappHref = `https://wa.me/919241619573?text=${encodeURIComponent(
     `Hello Kitty Corp, I would like to discuss the "${template.name}" blueprint for my business.`
@@ -151,15 +155,23 @@ export function LivePreviewModal({ template, onClose }: LivePreviewModalProps) {
 
           {/* Action CTAs */}
           <div className="live-preview-actions">
+            <Link
+              href={`/admin/demos/new?template=${template.id}`}
+              className="button small dark preview-cta-customize"
+              title="Customize this blueprint for a client"
+            >
+              <Wand2 size={14} />
+              <span>Customize</span>
+            </Link>
             <a
               href={whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="button small dark preview-cta-whatsapp"
+              className="button small whatsapp-button preview-cta-whatsapp"
               aria-label="Enquire about this template via WhatsApp"
             >
-              <MessageCircle size={15} />
-              <span>Enquire via WhatsApp</span>
+              <MessageCircle size={14} />
+              <span className="desktop-only-text">WhatsApp</span>
             </a>
             <Link
               href={`/templates/${template.id}`}
@@ -167,7 +179,7 @@ export function LivePreviewModal({ template, onClose }: LivePreviewModalProps) {
               className="button small preview-cta-page"
               title="Open standalone page"
             >
-              <ExternalLink size={15} />
+              <ExternalLink size={14} />
               <span className="desktop-only-text">Full Page</span>
             </Link>
             <button
@@ -189,21 +201,12 @@ export function LivePreviewModal({ template, onClose }: LivePreviewModalProps) {
               width: getViewportWidth(),
               maxWidth: device === "desktop" ? "1280px" : getViewportWidth(),
               height: device === "desktop" ? "100%" : getViewportHeight(),
+              overflowY: "auto",
+              background: "#ffffff",
+              boxShadow: device !== "desktop" ? "0 20px 60px rgba(0,0,0,0.2)" : undefined,
             }}
           >
-            {loading && (
-              <div className="live-preview-loading">
-                <Loader2 size={26} className="animate-spin text-[#1A1412]" />
-                <span>Loading {template.name}…</span>
-              </div>
-            )}
-            <iframe
-              key={template.id}
-              src={`/templates/${template.id}?embed=1`}
-              title={`Live Preview of ${template.name}`}
-              className="live-preview-iframe"
-              onLoad={() => setLoading(false)}
-            />
+            <BusinessSite demo={demo} mode="template" />
           </div>
         </div>
       </div>
