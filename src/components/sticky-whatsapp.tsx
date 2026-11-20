@@ -12,14 +12,16 @@ export function StickyWhatsApp() {
   return (
     <aside
       aria-label="Direct WhatsApp Consultation"
-      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 pointer-events-auto"
+      className="fixed right-4 sm:right-6 z-50 pointer-events-auto"
+      style={{ bottom: "calc(16px + env(safe-area-inset-bottom, 0px))" }}
     >
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp with Kitty Corp Studio (+91 9241619573)"
-        className="group flex items-center gap-2.5 px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#FCFBF9] hover:bg-[#FFFFFF] text-[#1A1412] border border-[#1A1412]/15 shadow-[0_8px_30px_rgba(26,20,18,0.12)] hover:shadow-[0_12px_40px_rgba(26,20,18,0.18)] transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+        className="group flex items-center gap-2.5 px-3.5 py-2 sm:px-5 sm:py-3 rounded-full bg-[#FCFBF9] hover:bg-[#FFFFFF] text-[#1A1412] border border-[#1A1412]/15 shadow-[0_8px_30px_rgba(26,20,18,0.12)] hover:shadow-[0_12px_40px_rgba(26,20,18,0.18)] transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+        style={{ touchAction: "manipulation" }}
       >
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75" />

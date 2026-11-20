@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Cat, ArrowUpRight, MessageCircle, Menu, X } from "lucide-react";
 import { OFFICIAL } from "@/lib/catalogue";
 
@@ -29,6 +29,17 @@ export function Brand({ light = false }: { light?: boolean }) {
 
 export function SiteNav() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <header className="site-nav">
@@ -100,6 +111,13 @@ export function SiteNav() {
             >
               Visit thekittycorp.com <ArrowUpRight size={16} />
             </a>
+            <Link
+              className="button outline-btn"
+              href="/admin"
+              onClick={() => setIsOpen(false)}
+            >
+              Admin Studio Login
+            </Link>
           </nav>
         </div>
       )}
