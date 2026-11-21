@@ -9,7 +9,7 @@ import { cookies } from "next/headers";
 import type { Demo } from "@/lib/types";
 const COOKIE = "kitty_session";
 const DEFAULT_ADMIN_USER = "admin";
-const DEFAULT_ADMIN_PASS = "kittycorp2026";
+const DEFAULT_ADMIN_PASS = "#kittycorp@2026";
 const DEFAULT_SESSION_SECRET =
   "kittycorp_session_secret_ultra_secure_key_2026_demo_studio_production";
 

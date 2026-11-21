@@ -91,7 +91,7 @@ export function Login({ configured = true }: { configured?: boolean }) {
                   autoComplete="username"
                   required
                   autoFocus
-                  placeholder="admin"
+                  placeholder="Enter studio ID"
                   className="login-input"
                 />
               </div>
@@ -125,10 +125,6 @@ export function Login({ configured = true }: { configured?: boolean }) {
               {busy ? "Authenticating…" : "Access Studio Workspace"}
               <ArrowRight size={17} />
             </button>
-
-            <div className="login-credentials-hint">
-              <span>Default Studio ID: <strong>admin</strong> · Key: <strong>kittycorp2026</strong></span>
-            </div>
           </form>
 
           <div className="login-footer-link">
