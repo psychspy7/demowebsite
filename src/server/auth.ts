@@ -8,20 +8,27 @@ import {
 import { cookies } from "next/headers";
 import type { Demo } from "@/lib/types";
 const COOKIE = "kitty_session";
-const DEFAULT_ADMIN_USER = "admin";
-const DEFAULT_ADMIN_PASS = "#kittycorp@2026";
-const DEFAULT_SESSION_SECRET =
-  "kittycorp_session_secret_ultra_secure_key_2026_demo_studio_production";
 
 export function authConfigured() {
-  return true;
+  const user = process.env.ADMIN_USERNAME?.trim();
+  const pass = process.env.ADMIN_PASSWORD?.trim();
+  const sessionSecret = process.env.SESSION_SECRET;
+  return Boolean(
+    user &&
+      pass &&
+      !user.startsWith("replace-") &&
+      !pass.startsWith("replace-") &&
+      sessionSecret &&
+      sessionSecret.length >= 32 &&
+      !sessionSecret.startsWith("replace-"),
+  );
 }
 function secret() {
   const s = process.env.SESSION_SECRET;
-  if (s && s.length >= 32 && !s.startsWith("replace-")) {
-    return s;
+  if (!s || s.length < 32 || s.startsWith("replace-")) {
+    throw new Error("SESSION_SECRET must be configured with at least 32 characters.");
   }
-  return DEFAULT_SESSION_SECRET;
+  return s;
 }
 function sign(value: string) {
   return createHmac("sha256", secret()).update(value).digest("base64url");
@@ -71,21 +78,11 @@ export function checkCredentials(username: string, password: string) {
 
   const user = clean(username);
   const pass = clean(password);
-
-  if (!user || !pass) return false;
-
   const envUser = clean(process.env.ADMIN_USERNAME);
   const envPass = clean(process.env.ADMIN_PASSWORD);
 
-  const userMatches =
-    equal(user, DEFAULT_ADMIN_USER) ||
-    (Boolean(envUser) && !envUser.startsWith("replace-") && equal(user, envUser));
-
-  const passMatches =
-    equal(pass, DEFAULT_ADMIN_PASS) ||
-    (Boolean(envPass) && !envPass.startsWith("replace-") && equal(pass, envPass));
-
-  return userMatches && passMatches;
+  if (!authConfigured() || !user || !pass || !envUser || !envPass) return false;
+  return equal(user, envUser) && equal(pass, envPass);
 }
 export function hashPassword(password: string) {
   const salt = randomBytes(16).toString("hex");
