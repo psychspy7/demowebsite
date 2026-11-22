@@ -10,13 +10,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_URL || "https://demo.thekittycorp.com"),
+  metadataBase: new URL(process.env.APP_URL || "https://business.thekittycorp.com"),
   title: {
     default: "Websites Engineered for Authority | KITTY CORP Studio",
     template: "%s | KITTY CORP",
   },
   description:
     "Expand your business and increase your revenue with KITTY CORP Studio’s sub-second, high-converting web platforms. Explore live website demos and tailored digital solutions.",
+  alternates: { canonical: "https://business.thekittycorp.com/" },
   applicationName: "KITTY CORP Demo Studio",
   authors: [{ name: "KITTY CORP", url: "https://thekittycorp.com" }],
   creator: "KITTY CORP",
