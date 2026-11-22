@@ -40,10 +40,10 @@ const jsonLd = {
   author: {
     "@type": "Organization",
     name: "KITTY CORP",
-    url: OFFICIAL,
+    url: "https://business.thekittycorp.com",
   },
   description:
-    "Bespoke website demonstration studio for ambitious enterprises, high-end practices, and category leaders. 18 industries, 88 blueprints, and sub-second performance.",
+    "High-converting, sub-second web platforms and website demonstrations by KITTY CORP Studio. Serving ambitious businesses in India and beyond.",
 };
 
 export default function Home() {
@@ -71,9 +71,8 @@ export default function Home() {
               <span className="hero-gradient-text">Built to convert.</span>
             </h1>
             <p className="hero-subtitle">
-              We design and engineer bespoke, sub-second web platforms for ambitious
-              businesses, medical practices, and category leaders. Handcrafted
-              architecture with zero AI slop, instant loading, and measurable conversion.
+              Expand your business and increase your revenue with KITTY CORP Studio’s
+              sub-second, high-converting web platforms.
             </p>
             <div className="button-row">
               <Link className="button dark hero-primary-btn" href="#blueprints">
