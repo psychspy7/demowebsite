@@ -12,11 +12,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || "https://demo.thekittycorp.com"),
   title: {
-    default: "KITTY CORP — Precision Engineering for Ambitious Businesses",
+    default: "Websites Engineered for Authority | KITTY CORP Studio",
     template: "%s | KITTY CORP",
   },
   description:
-    "Professional website demonstration studio for ambitious enterprises. Explore 18 industry collections, 88 specialty templates, and live responsive previews.",
+    "Expand your business and increase your revenue with KITTY CORP Studio’s sub-second, high-converting web platforms. Explore live website demos and tailored digital solutions.",
   applicationName: "KITTY CORP Demo Studio",
   authors: [{ name: "KITTY CORP", url: "https://thekittycorp.com" }],
   creator: "KITTY CORP",
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: "https://business.thekittycorp.com/",
     siteName: "KITTY CORP Demo Studio",
-    title: "KITTY CORP — Demo Studio",
+    title: "Websites Engineered for Authority. Built to Convert. | KITTY CORP Studio",
     description:
-      "Transforming business concepts into high-converting digital realities. Explore tailored website demonstrations across 18 major industries.",
+      "Expand your business and increase your revenue with KITTY CORP Studio’s sub-second, high-converting web platforms. Explore live demos at demo.thekittycorp.com.",
     images: [
       {
         url: "/images/restaurant.jpg",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "KITTY CORP — Demo Studio",
+    title: "Websites Engineered for Authority. Built to Convert. | KITTY CORP Studio",
     description:
-      "Transforming business concepts into high-converting digital realities.",
+      "Sub-second, high-converting web platforms by KITTY CORP Studio. Explore live website demos.",
     creator: "@KittyCorphq",
   },
 };
