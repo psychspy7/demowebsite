@@ -42,7 +42,7 @@ export default function TermsAndConditions() {
         </section>
         <section>
           <h2>6. Client-owned accounts, assets and third-party services</h2>
-          <p>Web hosting, third-party APIs and paid plugins or applications are purchased directly under the client's own accounts wherever possible. The client retains 100% ownership and control of those accounts, including billing and administrative access, and is responsible for third-party subscriptions, usage charges and renewals. We will not represent third-party services as free or included unless the written proposal explicitly says so.</p>
+          <p>Web hosting, third-party APIs and paid plugins or applications will be purchased directly under the client's own accounts. The client retains 100% ownership and control of those accounts, including billing and administrative access, and is responsible for third-party subscriptions, usage charges and renewals. If a provider requires a different arrangement, it must be agreed with the client in writing before purchase. We will not represent third-party services as free or included unless the written proposal explicitly says so.</p>
           <p>The client retains ownership of materials it supplies, subject to any rights held by their original owners. Once all project fees are paid, the client may use the final custom deliverables created specifically for the project as described in the proposal. Pre-existing Studio tools, reusable components, methods, know-how, open-source software and third-party assets remain subject to their respective ownership and licences.</p>
         </section>
         <section>
