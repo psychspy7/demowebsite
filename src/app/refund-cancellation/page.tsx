@@ -31,7 +31,7 @@ export default function RefundCancellation() {
         </section>
         <section>
           <h2>4. Maintenance plans</h2>
-          <p>The first month of maintenance after launch is included for eligible projects. Any paid maintenance plan begins only after you choose and confirm it in writing. Monthly maintenance can be cancelled before the next billing period; cancellation takes effect at the end of the period already paid for. For an annual plan, you may request cancellation before the next annual renewal. Fees for a current month or annual period are not refundable once that period has started, except where required by law or expressly agreed in writing.</p>
+          <p>Each website project includes one month of maintenance after launch. Any paid maintenance plan begins only after you choose and confirm it in writing. Monthly maintenance can be cancelled before the next billing period; cancellation takes effect at the end of the period already paid for. For an annual plan, you may request cancellation before the next annual renewal. Fees for a current month or annual period are not refundable once that period has started, except where required by law or expressly agreed in writing.</p>
           <p>The annual option is $1,000 for 12 months, compared with $1,200 at the monthly rate. The two-month equivalent saving is reflected in the annual price; it is not a cash rebate.</p>
         </section>
         <section>
