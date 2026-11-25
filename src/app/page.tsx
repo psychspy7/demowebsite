@@ -28,22 +28,38 @@ import { templates, industries, OFFICIAL } from "@/lib/catalogue";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "KITTY CORP Demo Studio",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  offers: {
-    "@type": "Offer",
-    price: "200",
-    priceCurrency: "USD",
-  },
-  author: {
-    "@type": "Organization",
-    name: "KITTY CORP",
-    url: "https://business.thekittycorp.com",
-  },
+  "@type": "ProfessionalService",
+  name: "KITTY CORP Studio",
+  url: "https://business.thekittycorp.com/",
+  logo: "https://thekittycorp.com/brand/kitty-corp-logo-dark.webp",
   description:
-    "High-performance business websites, e-commerce platforms and custom digital experiences by KITTY CORP Studio. Available to businesses in India and worldwide.",
+    "KITTY CORP designs and develops business websites, e-commerce platforms and custom digital experiences. Projects are welcome from businesses in India and international markets.",
+  areaServed: ["India", "Worldwide"],
+  priceRange: "USD 200–1500+",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Website development services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        price: "200",
+        priceCurrency: "USD",
+        itemOffered: { "@type": "Service", name: "Basic Website Development" },
+      },
+      {
+        "@type": "Offer",
+        price: "800",
+        priceCurrency: "USD",
+        itemOffered: { "@type": "Service", name: "Business Website Development" },
+      },
+      {
+        "@type": "Offer",
+        price: "1500",
+        priceCurrency: "USD",
+        itemOffered: { "@type": "Service", name: "E-commerce Website Development" },
+      },
+    ],
+  },
 };
 
 export default function Home() {
@@ -75,7 +91,7 @@ export default function Home() {
             </p>
             <div className="button-row">
               <Link className="button dark hero-primary-btn" href="#blueprints">
-                Explore 88 Blueprints <ArrowRight size={17} />
+                Explore 88 Website Blueprints <ArrowRight size={17} />
               </Link>
               <a
                 className="button whatsapp-button hero-whatsapp-btn"
@@ -90,7 +106,7 @@ export default function Home() {
             </div>
             <div className="hero-footnote">
               <CheckCircle2 size={15} className="footnote-check" />
-              <span>Sub-400ms edge response · 6 months dedicated maintenance included</span>
+              <span>Performance-focused engineering · Clear scope and six months of agreed maintenance</span>
             </div>
           </div>
 
@@ -108,7 +124,7 @@ export default function Home() {
                   <span>business.thekittycorp.com/{premierTemplate.industry}</span>
                 </div>
                 <div className="window-latency-badge">
-                  <Zap size={11} /> 120ms
+                  <Zap size={11} /> Fast
                 </div>
               </div>
               <div className="studio-window-content">
