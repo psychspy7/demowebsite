@@ -6142,3 +6142,180 @@
     animation: none !important;
   }
 }
+
+
+/* Compact studio homepage and legal pages */
+.studio-compact .compact-hero {
+  min-height: 0;
+  padding-top: 58px;
+  padding-bottom: 52px;
+  gap: 5%;
+}
+.studio-compact .hero-subtitle { max-width: 560px; }
+.compact-showcase { min-width: 0; }
+.compact-strip { padding-top: 20px; padding-bottom: 20px; }
+.compact-strip .strip-number { font-size: 22px; }
+.compact-pricing { padding-top: 64px; padding-bottom: 46px; }
+.compact-pricing .section-heading { margin-bottom: 28px; }
+.compact-pricing .pricing-card { padding: 26px; }
+.compact-pricing .pricing-card > p { min-height: 66px; }
+.compact-pricing .pricing-features { margin: 18px 0 22px; }
+.bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+.bonus-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--alabaster-warm);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.bonus-card > svg { color: var(--espresso-muted); margin-top: 2px; }
+.bonus-card h3 { font-size: 14px; margin-bottom: 6px; }
+.bonus-card p { color: var(--espresso-muted); font-size: 12px; line-height: 1.6; }
+.pricing-disclaimer {
+  margin-top: 14px;
+  color: var(--espresso-light);
+  font-size: 11px;
+  line-height: 1.65;
+}
+.compact-details-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 5% 58px;
+  display: grid;
+  gap: 12px;
+}
+.home-details {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+.home-details > summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 22px;
+  cursor: pointer;
+}
+.home-details > summary::-webkit-details-marker { display: none; }
+.home-details > summary strong { display: block; font-size: 15px; }
+.home-details > summary small {
+  display: block;
+  margin-top: 4px;
+  color: var(--espresso-muted);
+  font-size: 12px;
+}
+.home-details > summary > svg { transition: transform .2s ease; }
+.home-details[open] > summary { border-bottom: 1px solid var(--border); }
+.home-details[open] > summary > svg { transform: rotate(180deg); }
+.home-details-content { padding: 22px; }
+.home-details-content .template-grid { gap: 16px; }
+.compact-industry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.compact-industry-grid .industry-link { margin-right: 0; padding: 15px 12px 15px 0; }
+.compact-industry-grid .industry-link h3 { font-size: 13px; }
+.process-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.process-compact-grid article {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.process-compact-grid article > span {
+  font-size: 11px;
+  color: var(--espresso-light);
+  font-weight: 700;
+}
+.process-compact-grid h3 { font-size: 15px; margin: 10px 0 7px; }
+.process-compact-grid p { font-size: 12px; line-height: 1.65; color: var(--espresso-muted); }
+.compact-closing { padding-top: 50px; padding-bottom: 58px; }
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin: 14px 0;
+  font-size: 12px;
+}
+.footer-legal a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.legal-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 62px 24px 90px;
+}
+.legal-page .eyebrow { display: block; margin-bottom: 12px; }
+.legal-page h1 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 12px; }
+.legal-page .legal-updated { color: var(--espresso-light); font-size: 12px; margin-bottom: 30px; }
+.legal-page .legal-intro {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--espresso-muted);
+  margin-bottom: 34px;
+}
+.legal-page section { padding: 22px 0; border-top: 1px solid var(--border); }
+.legal-page h2 { font-size: 20px; margin-bottom: 12px; }
+.legal-page p, .legal-page li {
+  color: var(--espresso-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.legal-page p + p { margin-top: 10px; }
+.legal-page ul { padding-left: 22px; margin: 10px 0; }
+.legal-page a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-contact {
+  margin-top: 26px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--alabaster-warm);
+}
+@media (max-width: 900px) {
+  .studio-compact .compact-hero { grid-template-columns: 1fr; gap: 38px; padding-top: 42px; }
+  .compact-showcase { max-width: 680px; width: 100%; margin: 0 auto; }
+  .bonus-grid { grid-template-columns: 1fr; }
+  .compact-industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .studio-compact .compact-hero { padding: 34px 5% 32px; }
+  .studio-compact .hero-copy h1 { font-size: clamp(36px, 10vw, 48px); }
+  .studio-compact .hero-subtitle { font-size: 14px; margin-bottom: 22px; }
+  .studio-compact .hero-copy .button-row { gap: 10px; margin-bottom: 18px; }
+  .studio-compact .hero-copy .button { width: 100%; }
+  .compact-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 15px 4%; }
+  .compact-strip .strip-divider { display: none; }
+  .compact-strip .strip-number { font-size: 17px; }
+  .compact-strip .strip-label { font-size: 8px; letter-spacing: .04em; }
+  .compact-pricing { padding: 42px 5% 32px; }
+  .compact-pricing .section-heading { display: block; margin-bottom: 22px; }
+  .compact-pricing .section-heading h2 { font-size: 32px; }
+  .compact-pricing .section-heading > p { margin-top: 12px; font-size: 13px; }
+  .compact-pricing .pricing-grid { grid-template-columns: 1fr; gap: 14px; }
+  .compact-pricing .pricing-card { padding: 22px; }
+  .compact-pricing .pricing-card > p { min-height: 0; }
+  .compact-pricing .pricing-action-btn { width: 100%; }
+  .compact-details-section { padding: 0 5% 36px; }
+  .home-details > summary { padding: 17px; }
+  .home-details-content { padding: 15px; }
+  .home-details-content .template-grid { grid-template-columns: 1fr; }
+  .compact-industry-grid { grid-template-columns: 1fr; }
+  .process-compact-grid { grid-template-columns: 1fr; }
+  .compact-closing { padding: 38px 5% 44px; }
+  .compact-closing h2 { font-size: 31px; }
+  .compact-closing .closing-cta-actions { flex-direction: column; width: 100%; }
+  .compact-closing .closing-cta-actions .button { width: 100%; }
+  .footer-legal { gap: 12px 18px; padding: 0 12px; }
+  .legal-page { padding: 42px 20px 64px; }
+  .legal-page .legal-intro { font-size: 14px; }
+}
