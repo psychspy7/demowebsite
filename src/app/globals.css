@@ -6319,3 +6319,54 @@
   .legal-page { padding: 42px 20px 64px; }
   .legal-page .legal-intro { font-size: 14px; }
 }
+
+
+/* Keep the complete industry directory visible on the homepage */
+.industry-showcase {
+  padding-top: 38px;
+  padding-bottom: 48px;
+}
+.industry-showcase .section-heading {
+  margin-bottom: 18px;
+}
+.industry-showcase .industry-grid {
+  border-top: 1px solid var(--border);
+}
+.industry-showcase .industry-link {
+  min-width: 0;
+  margin-right: 0;
+  padding: 16px 14px 16px 0;
+  gap: 10px;
+}
+.industry-showcase .industry-link h3 {
+  font-size: 13px;
+  line-height: 1.4;
+}
+.industry-showcase .industry-link svg {
+  flex: 0 0 auto;
+}
+@media (max-width: 640px) {
+  .industry-showcase {
+    padding-top: 28px;
+    padding-bottom: 34px;
+  }
+  .industry-showcase .section-heading h2 {
+    font-size: 29px;
+  }
+  .industry-showcase .compact-industry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+  }
+  .industry-showcase .industry-link {
+    padding: 13px 4px 13px 0;
+    gap: 5px;
+  }
+  .industry-showcase .industry-link h3 {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+  .industry-showcase .industry-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}
