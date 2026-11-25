@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   Check,
   CheckCircle2,
+  ChevronDown,
   Globe2,
   Layers,
   MessageCircle,
