@@ -12,11 +12,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || "https://business.thekittycorp.com"),
   title: {
-    default: "Websites Engineered for Authority | KITTY CORP Studio",
+    default: "Business Websites & E-commerce Development | KITTY CORP",
     template: "%s | KITTY CORP",
   },
   description:
-    "Expand your business and increase your revenue with KITTY CORP Studio’s sub-second, high-converting web platforms. Explore live website demos and tailored digital solutions.",
+    "KITTY CORP builds high-performance business websites and e-commerce platforms for companies in India and worldwide. Explore our work and request a project quote.",
   alternates: { canonical: "https://business.thekittycorp.com/" },
   applicationName: "KITTY CORP Demo Studio",
   authors: [{ name: "KITTY CORP", url: "https://thekittycorp.com" }],
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://business.thekittycorp.com/",
     siteName: "KITTY CORP Demo Studio",
-    title: "Websites Engineered for Authority. Built to Convert. | KITTY CORP Studio",
+    title: "Business Websites & E-commerce Development | KITTY CORP Studio",
     description:
-      "Expand your business and increase your revenue with KITTY CORP Studio’s sub-second, high-converting web platforms. Explore live demos at demo.thekittycorp.com.",
+      "Custom business websites, online stores and digital experiences by KITTY CORP. Available for projects in India and international markets.",
     images: [
       {
         url: "/images/restaurant.jpg",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Websites Engineered for Authority. Built to Convert. | KITTY CORP Studio",
     description:
-      "Sub-second, high-converting web platforms by KITTY CORP Studio. Explore live website demos.",
+      "Business websites, e-commerce development and digital experiences by KITTY CORP Studio. Projects welcome worldwide.",
     creator: "@KittyCorphq",
   },
 };
