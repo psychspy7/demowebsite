@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_URL || "https://business.thekittycorp.com"),
+  metadataBase: new URL("https://business.thekittycorp.com"),
   title: {
     default: "Business Websites & E-commerce Development | KITTY CORP",
     template: "%s | KITTY CORP",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "Custom business websites, online stores and digital experiences by KITTY CORP. Available for projects in India and international markets.",
     images: [
       {
-        url: "/images/restaurant.jpg",
+        url: "https://business.thekittycorp.com/images/restaurant.jpg",
         width: 1200,
         height: 630,
         alt: "KITTY CORP Demo Studio Preview",
