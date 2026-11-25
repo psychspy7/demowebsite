@@ -10,7 +10,6 @@ import {
   MessageCircle,
   ShieldCheck,
   Sparkles,
-  Workflow,
 } from "lucide-react";
 import {
   SiteNav,
