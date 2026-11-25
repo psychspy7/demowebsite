@@ -105,7 +105,7 @@ export default function Home() {
                 </div>
                 <div className="window-address-pill">
                   <span className="pill-lock">🔒</span>
-                  <span>demo.thekittycorp.com/{premierTemplate.industry}</span>
+                  <span>business.thekittycorp.com/{premierTemplate.industry}</span>
                 </div>
                 <div className="window-latency-badge">
                   <Zap size={11} /> 120ms
