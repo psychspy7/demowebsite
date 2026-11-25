@@ -2,10 +2,7 @@ import type { MetadataRoute } from "next";
 import { industries } from "@/lib/catalogue";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = (process.env.APP_URL || "https://demo.thekittycorp.com").replace(
-    /\/+$/,
-    "",
-  );
+  const base = "https://business.thekittycorp.com";
   const now = new Date();
   return [
     {
