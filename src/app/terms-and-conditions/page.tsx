@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
 
         <section>
           <h2>1. About the Studio</h2>
-          <p>This website is operated under the KITTY CORP brand. The legal contracting party for each paid engagement will be named in the relevant proposal, invoice or agreement. Nothing on this website represents that the brand is a government body, a regulated professional service or a separately incorporated entity.</p>
+          <p>This website is operated under the KITTY CORP brand. The legal name and contact details of the contracting party for each paid engagement will be stated in the relevant proposal, invoice or agreement.</p>
         </section>
         <section>
           <h2>2. Services and project scope</h2>
@@ -32,17 +32,17 @@ export default function TermsAndConditions() {
         </section>
         <section>
           <h2>4. Included domain bonus</h2>
-          <p>Eligible projects include one year of standard domain registration. Domain selection is subject to availability and registrar approval. Premium, reserved or unusually priced domain names, special TLD fees and other optional services may cost extra if not expressly included in the written quote. From the second year onward, the client is responsible for domain renewal charges and for keeping the domain registration active.</p>
+          <p>Each website project includes one year of standard domain registration. Domain selection is subject to availability and registrar approval. Premium, reserved or unusually priced domain names, special TLD fees and other optional services may cost extra if not expressly included in the written quote. From the second year onward, the client is responsible for domain renewal charges and for keeping the domain registration active.</p>
           <p>The domain should be registered under an account controlled by the client wherever the registrar permits. The client is responsible for providing accurate registration details and maintaining access to that account.</p>
         </section>
         <section>
           <h2>5. Included maintenance and optional continuation</h2>
-          <p>Each eligible website project includes one month of maintenance at no additional Studio service fee after the website launch. The exact start date and covered tasks will be confirmed in the project handover or written scope.</p>
+          <p>Each website project includes one month of maintenance at no additional Studio service fee after launch. The exact start date and covered tasks will be confirmed in the project handover or written scope.</p>
           <p>After the included month, the client may choose continued maintenance at <strong>$100 per month</strong>, or <strong>$1,000 for 12 months</strong> (equivalent to two months free compared with twelve monthly payments). A paid plan starts only after the client selects and confirms it in writing. Maintenance covers only the agreed routine updates, bug fixes and support tasks stated in the proposal; new features, redesigns, new integrations, content production, third-party outages and work caused by changes outside our control are not included unless agreed separately.</p>
         </section>
         <section>
           <h2>6. Client-owned accounts, assets and third-party services</h2>
-          <p>Web hosting, third-party APIs and paid plugins or applications are purchased directly under the client's own accounts wherever possible. The client retains account ownership, billing control and administrative access, and is responsible for third-party subscriptions, usage charges and renewals. We will not represent third-party services as free or included unless the written proposal explicitly says so.</p>
+          <p>Web hosting, third-party APIs and paid plugins or applications are purchased directly under the client's own accounts wherever possible. The client retains 100% ownership and control of those accounts, including billing and administrative access, and is responsible for third-party subscriptions, usage charges and renewals. We will not represent third-party services as free or included unless the written proposal explicitly says so.</p>
           <p>The client retains ownership of materials it supplies, subject to any rights held by their original owners. Once all project fees are paid, the client may use the final custom deliverables created specifically for the project as described in the proposal. Pre-existing Studio tools, reusable components, methods, know-how, open-source software and third-party assets remain subject to their respective ownership and licences.</p>
         </section>
         <section>
