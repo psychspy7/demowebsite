@@ -9,6 +9,13 @@ export const viewport: Viewport = {
   themeColor: "#FCFBF9",
 };
 
+const socialPreviewImage = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "KITTY CORP Studio — Websites engineered for authority. Built to convert.",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://business.thekittycorp.com"),
   title: {
@@ -30,24 +37,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://business.thekittycorp.com/",
-    siteName: "KITTY CORP Demo Studio",
-    title: "Business Websites & E-commerce Development | KITTY CORP Studio",
+    siteName: "KITTY CORP Studio",
+    title: "Websites engineered for authority. Built to convert. | KITTY CORP Studio",
     description:
-      "Custom business websites, online stores and digital experiences by KITTY CORP. Available for projects in India and international markets.",
-    images: [
-      {
-        url: "https://business.thekittycorp.com/images/restaurant.jpg",
-        width: 1200,
-        height: 630,
-        alt: "KITTY CORP Demo Studio Preview",
-      },
-    ],
+      "Thoughtful, high-performance websites for ambitious businesses. From a focused business presence to a complete online store, every project is shaped around your goals.",
+    images: [socialPreviewImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Websites & E-commerce Development | KITTY CORP Studio",
+    title: "Websites engineered for authority. Built to convert. | KITTY CORP Studio",
     description:
-      "Business websites, e-commerce development and digital experiences by KITTY CORP Studio. Projects welcome worldwide.",
+      "Thoughtful, high-performance websites for ambitious businesses. Explore KITTY CORP Studio.",
+    images: [socialPreviewImage],
     creator: "@KittyCorphq",
   },
 };
