@@ -34,8 +34,8 @@ const jsonLd = {
   operatingSystem: "Web",
   offers: {
     "@type": "Offer",
-    price: "10000",
-    priceCurrency: "INR",
+    price: "200",
+    priceCurrency: "USD",
   },
   author: {
     "@type": "Organization",
@@ -43,7 +43,7 @@ const jsonLd = {
     url: "https://business.thekittycorp.com",
   },
   description:
-    "High-converting, sub-second web platforms and website demonstrations by KITTY CORP Studio. Serving ambitious businesses in India and beyond.",
+    "High-performance business websites, e-commerce platforms and custom digital experiences by KITTY CORP Studio. Available to businesses in India and worldwide.",
 };
 
 export default function Home() {
@@ -71,8 +71,7 @@ export default function Home() {
               <span className="hero-gradient-text">Built to convert.</span>
             </h1>
             <p className="hero-subtitle">
-              Expand your business and increase your revenue with KITTY CORP Studio’s
-              sub-second, high-converting web platforms.
+              We design and build fast, conversion-focused websites for businesses in India and across international markets. From a clear first website to a complete online store, every project is scoped around your goals.
             </p>
             <div className="button-row">
               <Link className="button dark hero-primary-btn" href="#blueprints">
@@ -121,16 +120,16 @@ export default function Home() {
             <div className="floating-metric-card metric-left">
               <Sparkles size={16} />
               <div>
-                <strong>100 / 100</strong>
-                <small>Core Web Vitals</small>
+                <strong>Performance-first</strong>
+                <small>Core Web Vitals aware</small>
               </div>
             </div>
 
             <div className="floating-metric-card metric-right">
               <ShieldCheck size={16} />
               <div>
-                <strong>Enterprise Edge</strong>
-                <small>Global Anycast SLA</small>
+                <strong>Global-ready</strong>
+                <small>Built for worldwide reach</small>
               </div>
             </div>
           </div>
@@ -149,8 +148,8 @@ export default function Home() {
           </div>
           <div className="strip-divider" />
           <div className="strip-item">
-            <span className="strip-number">&lt; 400ms</span>
-            <span className="strip-label">Global Edge Latency</span>
+            <span className="strip-number">Global</span>
+            <span className="strip-label">Performance-focused delivery</span>
           </div>
           <div className="strip-divider" />
           <div className="strip-item">
@@ -273,8 +272,7 @@ export default function Home() {
                 </div>
                 <h3>Enterprise Edge Infrastructure</h3>
                 <p>
-                  Deployed on Vercel Anycast edge network with Supabase PostgreSQL,
-                  automatic SSL, and bank-grade data security with 99.99% uptime.
+                  Built with modern deployment infrastructure, automatic SSL, and security-conscious data handling. Hosting, uptime requirements, and third-party services are confirmed for each project.
                 </p>
               </article>
 
@@ -361,89 +359,48 @@ export default function Home() {
               </h2>
             </div>
             <p>
-              Direct, milestone-based pricing with zero hidden fees. Clear deliverables
-              shaped around your specific commercial goals.
+              Starting prices are shown in USD. Final pricing depends on scope, content, integrations, hosting, and agreed deliverables. Every project receives a written quote before work begins.
             </p>
           </div>
           <div className="pricing-grid">
             <article className="pricing-card">
-              <span className="pricing-tier-label">Foundation Platform</span>
-              <div className="pricing-amount">
-                <h3>From ₹10,000</h3>
-                <small>One-time investment</small>
-              </div>
-              <p>
-                A high-speed, precision-crafted foundation designed for professional
-                practices, boutiques, and emerging businesses.
-              </p>
+              <span className="pricing-tier-label">Basic Website</span>
+              <div className="pricing-amount"><h3>From $200</h3><small>USD · one-time project starting price</small></div>
+              <p>A polished, responsive website that gives your business a clear online presence and makes it easy for customers to get in touch.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Bespoke multi-section responsive architecture</li>
-                <li><Check size={14} /> Direct WhatsApp booking & lead capture</li>
-                <li><Check size={14} /> Sub-400ms global edge hosting configuration</li>
-                <li><Check size={14} /> 6 months complimentary maintenance</li>
+                <li><Check size={14} /> Responsive design for mobile and desktop</li>
+                <li><Check size={14} /> Essential pages and clear navigation</li>
+                <li><Check size={14} /> Contact and enquiry path</li>
+                <li><Check size={14} /> Basic on-page SEO setup</li>
               </ul>
-              <a
-                className="button outline-btn pricing-action-btn"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Start with Foundation <ArrowUpRight size={16} />
-              </a>
+              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Start a Basic Website <ArrowUpRight size={16} /></a>
             </article>
-
             <article className="pricing-card featured-pricing-card">
-              <div className="featured-ribbon">Most Selected by Growing Brands</div>
-              <span className="pricing-tier-label">Custom Growth Studio</span>
-              <div className="pricing-amount">
-                <h3>₹18,000 – ₹25,000</h3>
-                <small>Comprehensive deployment</small>
-              </div>
-              <p>
-                A multi-route web platform with dedicated inquiry workflows, interactive
-                catalogs, and full SEO search engine indexing.
-              </p>
+              <div className="featured-ribbon">For growing businesses</div>
+              <span className="pricing-tier-label">Business Website</span>
+              <div className="pricing-amount"><h3>From $800</h3><small>USD · one-time project starting price</small></div>
+              <p>A custom multi-page business platform designed to present your services, build trust, and turn visits into qualified enquiries.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Complete multi-page experience (up to 8 pages)</li>
-                <li><Check size={14} /> Dynamic template showcase / menu / portfolio</li>
-                <li><Check size={14} /> Automated lead management & Supabase store</li>
-                <li><Check size={14} /> Google Analytics 4 & Search Console setup</li>
-                <li><Check size={14} /> 6 months dedicated performance warranty</li>
+                <li><Check size={14} /> Custom multi-page website architecture</li>
+                <li><Check size={14} /> Tailored design and conversion-focused layout</li>
+                <li><Check size={14} /> Lead forms and agreed integrations</li>
+                <li><Check size={14} /> Technical and on-page SEO foundations</li>
+                <li><Check size={14} /> Analytics and performance setup</li>
               </ul>
-              <a
-                className="button dark pricing-action-btn"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Discuss Growth Scope <ArrowUpRight size={16} />
-              </a>
+              <a className="button dark pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Build a Business Website <ArrowUpRight size={16} /></a>
             </article>
-
             <article className="pricing-card">
-              <span className="pricing-tier-label">Bespoke Enterprise</span>
-              <div className="pricing-amount">
-                <h3>₹35,000+</h3>
-                <small>Tailored systems</small>
-              </div>
-              <p>
-                Full-stack custom software, client portals, complex workflow automations,
-                and high-scale digital ecosystems.
-              </p>
+              <span className="pricing-tier-label">E-commerce Website</span>
+              <div className="pricing-amount"><h3>From $1,500</h3><small>USD · one-time project starting price</small></div>
+              <p>A complete online storefront with product discovery, shopping flows, and the integrations agreed for your operation.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Tailored full-stack application logic</li>
-                <li><Check size={14} /> Multi-user authenticated dashboards</li>
-                <li><Check size={14} /> Custom CRM / API webhooks & automation</li>
-                <li><Check size={14} /> Priority SLA support & architectural reviews</li>
+                <li><Check size={14} /> Product catalogue and category structure</li>
+                <li><Check size={14} /> Cart and checkout integration</li>
+                <li><Check size={14} /> Order and customer workflows</li>
+                <li><Check size={14} /> Mobile-first shopping experience</li>
+                <li><Check size={14} /> E-commerce SEO foundations</li>
               </ul>
-              <a
-                className="button outline-btn pricing-action-btn"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Request Enterprise Proposal <ArrowUpRight size={16} />
-              </a>
+              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Launch an Online Store <ArrowUpRight size={16} /></a>
             </article>
           </div>
 
@@ -460,7 +417,7 @@ export default function Home() {
               </p>
             </div>
             <div className="maintenance-tags">
-              <span><Check size={15} /> 99.99% Uptime Monitoring</span>
+              <span><Check size={15} /> Uptime monitoring options</span>
               <span><Check size={15} /> Continuous Security Patches</span>
             </div>
           </div>
