@@ -10,10 +10,10 @@ export const viewport: Viewport = {
 };
 
 const socialPreviewImage = {
-  url: "/opengraph-image?rev=20261125b",
+  url: "/opengraph-image?rev=20261125c",
   width: 1200,
   height: 630,
-  alt: "KITTY CORP Studio — Websites engineered for authority. Built to convert.",
+  alt: "KITTY CORP Studio — We build websites that grow your business. Built to convert.",
 };
 
 export const metadata: Metadata = {
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://business.thekittycorp.com/?share=20261125b",
+    url: "https://business.thekittycorp.com/?share=20261125c",
     siteName: "KITTY CORP Studio",
-    title: "Websites engineered for authority. Built to convert. | KITTY CORP Studio",
+    title: "We build websites that grow your business. Built to convert. | KITTY CORP Studio",
     description:
       "Thoughtful, high-performance websites for ambitious businesses. From a focused business presence to a complete online store, every project is shaped around your goals.",
     images: [socialPreviewImage],
