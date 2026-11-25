@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Websites Engineered for Authority. Built to Convert. | KITTY CORP Studio",
+    title: "Business Websites & E-commerce Development | KITTY CORP Studio",
     description:
       "Business websites, e-commerce development and digital experiences by KITTY CORP Studio. Projects welcome worldwide.",
     creator: "@KittyCorphq",
