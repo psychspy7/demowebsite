@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "KITTY CORP Studio — Websites engineered for authority. Built to convert.";
+export const alt = "KITTY CORP Studio — We build websites that grow your business. Built to convert.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,8 +34,8 @@ export default function OpenGraphImage() {
             KITTY CORP STUDIO · INDIA &amp; WORLDWIDE
           </div>
           <div style={{ display: "flex", flexDirection: "column", marginTop: 28, fontSize: 70, lineHeight: 1.02, letterSpacing: -3, fontWeight: 500 }}>
-            <div>Websites engineered</div>
-            <div>for authority.</div>
+            <div>We build websites</div>
+            <div>that grow your business.</div>
             <div style={{ fontWeight: 700, background: "linear-gradient(90deg, #201914 0%, #A35D20 78%)", backgroundClip: "text", color: "transparent" }}>Built to convert.</div>
           </div>
           <div style={{ marginTop: 28, maxWidth: 860, fontSize: 23, lineHeight: 1.55, color: "#707967" }}>
