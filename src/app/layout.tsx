@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 };
 
 const socialPreviewImage = {
-  url: "/opengraph-image",
+  url: "/opengraph-image?rev=20261125b",
   width: 1200,
   height: 630,
   alt: "KITTY CORP Studio — Websites engineered for authority. Built to convert.",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://business.thekittycorp.com/",
+    url: "https://business.thekittycorp.com/?share=20261125b",
     siteName: "KITTY CORP Studio",
     title: "Websites engineered for authority. Built to convert. | KITTY CORP Studio",
     description:
