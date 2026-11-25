@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Check,
   CheckCircle2,
-  ChevronDown,
   Globe2,
   Layers,
   MessageCircle,
@@ -171,6 +170,23 @@ export default function Home() {
           <p className="pricing-disclaimer">Domain availability and eligibility are confirmed before registration. Third-party subscriptions, usage charges, taxes and premium domain costs are separate unless your written quote says otherwise. Ongoing maintenance begins only if you choose a paid plan.</p>
         </section>
 
+        <section id="industries" className="section-wrap industry-showcase" aria-labelledby="industries-title">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">INDUSTRIES WE SERVE</span>
+              <h2 id="industries-title">Explore our industry collections.<br /><span className="heading-sub">Find a starting point for your field.</span></h2>
+            </div>
+            <p>Browse all 18 collections. Each one opens a focused set of website concepts and starting points for that industry.</p>
+          </div>
+          <div className="industry-grid compact-industry-grid">
+            {industries.map((industry) => (
+              <Link href={`/${industry.id}`} key={industry.id} className="industry-link">
+                <h3>{industry.name}</h3><ArrowUpRight size={17} />
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="compact-details-section" aria-label="Explore the studio">
           <details id="blueprints" className="home-details">
             <summary>
@@ -178,21 +194,6 @@ export default function Home() {
               <ChevronDown size={20} />
             </summary>
             <div className="home-details-content"><TemplateLibrary /></div>
-          </details>
-          <details id="industries" className="home-details">
-            <summary>
-              <span><strong>Browse 18 industry collections</strong><small>Find a starting point tailored to your field.</small></span>
-              <ChevronDown size={20} />
-            </summary>
-            <div className="home-details-content">
-              <div className="industry-grid compact-industry-grid">
-                {industries.map((industry) => (
-                  <Link href={`/${industry.id}`} key={industry.id} className="industry-link">
-                    <h3>{industry.name}</h3><ArrowUpRight size={17} />
-                  </Link>
-                ))}
-              </div>
-            </div>
           </details>
           <details className="home-details">
             <summary>
