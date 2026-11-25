@@ -60,7 +60,7 @@ export default function Home() {
               <span>KITTY CORP STUDIO · INDIA & WORLDWIDE</span>
             </div>
             <h1>
-              Websites engineered for authority.
+              We build websites that grow your business.
               <br />
               <span className="hero-gradient-text">Built to convert.</span>
             </h1>
