@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Cat, ArrowUpRight, MessageCircle, Menu, X } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Menu, X } from "lucide-react";
 import { OFFICIAL } from "@/lib/catalogue";
 
 export const WHATSAPP_NUMBER = "+919241619573";
@@ -16,13 +16,13 @@ export function Brand({ light = false }: { light?: boolean }) {
       className={`brand ${light ? "light" : ""}`}
       aria-label="Kitty Corp home"
     >
-      <span className="brand-mark">
-        <Cat size={22} strokeWidth={1.8} />
-      </span>
-      <span>
-        KITTY<span className="brand-weight">CORP</span>
-        <small>DEMO STUDIO</small>
-      </span>
+      <img
+        className="brand-logo"
+        src="https://thekittycorp.com/brand/kitty-corp-logo-dark.webp"
+        alt="KITTY CORP"
+        width={168}
+        height={42}
+      />
     </Link>
   );
 }
