@@ -106,7 +106,7 @@ export default function Home() {
             </div>
             <div className="hero-footnote">
               <CheckCircle2 size={15} className="footnote-check" />
-              <span>Performance-focused engineering · Clear scope and six months of agreed maintenance</span>
+              <span>Performance-focused engineering · Scope and support agreed upfront</span>
             </div>
           </div>
 
@@ -426,10 +426,9 @@ export default function Home() {
               <Layers size={26} />
             </div>
             <div className="maintenance-copy">
-              <h3>Every deployment includes 6 months of active care.</h3>
+              <h3>Eligible projects include six months of agreed maintenance.</h3>
               <p>
-                We handle core updates, security patches, uptime monitoring, and speed
-                tuning so you can focus entirely on running your business.
+                The exact coverage is confirmed in your written quote. Where included, we handle agreed updates, bug fixes, monitoring, and performance refinements after launch.
               </p>
             </div>
             <div className="maintenance-tags">
