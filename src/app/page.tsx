@@ -2,29 +2,23 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  Globe2,
+  Layers,
   MessageCircle,
   ShieldCheck,
-  Zap,
   Sparkles,
-  CheckCircle2,
-  ChevronRight,
-  Layers,
-  Smartphone,
-  Globe,
-  Clock,
-  Workflow,
-  Code2,
-  Check,
 } from "lucide-react";
 import {
-  Brand,
   SiteNav,
   SiteFooter,
   WHATSAPP_URL,
   WHATSAPP_NUMBER,
 } from "@/components/brand";
 import { TemplateLibrary, TemplateThumbnail } from "@/components/template-library";
-import { templates, industries, OFFICIAL } from "@/lib/catalogue";
+import { templates, industries } from "@/lib/catalogue";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -33,38 +27,23 @@ const jsonLd = {
   url: "https://business.thekittycorp.com/",
   logo: "https://thekittycorp.com/brand/kitty-corp-logo-dark.webp",
   description:
-    "KITTY CORP designs and develops business websites, e-commerce platforms and custom digital experiences. Projects are welcome from businesses in India and international markets.",
+    "KITTY CORP designs and develops business websites, e-commerce platforms and custom digital experiences for clients in India and worldwide.",
   areaServed: ["India", "Worldwide"],
   priceRange: "USD 200–1500+",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Website development services",
     itemListElement: [
-      {
-        "@type": "Offer",
-        price: "200",
-        priceCurrency: "USD",
-        itemOffered: { "@type": "Service", name: "Basic Website Development" },
-      },
-      {
-        "@type": "Offer",
-        price: "800",
-        priceCurrency: "USD",
-        itemOffered: { "@type": "Service", name: "Business Website Development" },
-      },
-      {
-        "@type": "Offer",
-        price: "1500",
-        priceCurrency: "USD",
-        itemOffered: { "@type": "Service", name: "E-commerce Website Development" },
-      },
+      { "@type": "Offer", price: "200", priceCurrency: "USD", itemOffered: { "@type": "Service", name: "Basic Website Development" } },
+      { "@type": "Offer", price: "800", priceCurrency: "USD", itemOffered: { "@type": "Service", name: "Business Website Development" } },
+      { "@type": "Offer", price: "1500", priceCurrency: "USD", itemOffered: { "@type": "Service", name: "E-commerce Website Development" } },
     ],
   },
 };
 
 export default function Home() {
   const premierTemplate =
-    templates.find((t) => t.id === "real-estate-1") || templates[0];
+    templates.find((template) => template.id === "real-estate-1") || templates[0];
 
   return (
     <>
@@ -73,13 +52,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SiteNav />
-      <main id="main">
-        {/* Apple-Grade Hero Section */}
-        <section className="landing-hero">
+      <main id="main" className="studio-compact">
+        <section className="landing-hero compact-hero">
           <div className="hero-copy">
             <div className="hero-badge">
               <span className="hero-badge-dot" />
-              <span>KITTY CORP STUDIO · BESPOKE DIGITAL CRAFT</span>
+              <span>KITTY CORP STUDIO · INDIA & WORLDWIDE</span>
             </div>
             <h1>
               Websites engineered for authority.
@@ -87,386 +65,157 @@ export default function Home() {
               <span className="hero-gradient-text">Built to convert.</span>
             </h1>
             <p className="hero-subtitle">
-              We design and build fast, conversion-focused websites for businesses in India and across international markets. From a clear first website to a complete online store, every project is scoped around your goals.
+              Thoughtful, high-performance websites for ambitious businesses.
+              From a focused business presence to a complete online store, every
+              project is shaped around your goals.
             </p>
             <div className="button-row">
-              <Link className="button dark hero-primary-btn" href="#blueprints">
-                Explore 88 Website Blueprints <ArrowRight size={17} />
+              <Link className="button dark" href="#pricing">
+                View packages <ArrowRight size={17} />
               </Link>
-              <a
-                className="button whatsapp-button hero-whatsapp-btn"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Chat on WhatsApp"
-              >
-                <MessageCircle size={17} />
-                <span>Chat on WhatsApp ({WHATSAPP_NUMBER})</span>
+              <a className="button whatsapp-button" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+                <MessageCircle size={17} /> Talk to our team
               </a>
             </div>
             <div className="hero-footnote">
               <CheckCircle2 size={15} className="footnote-check" />
-              <span>Performance-focused engineering · Scope and support agreed upfront</span>
+              <span>Clear scope · Client-owned accounts · Support options agreed upfront</span>
             </div>
           </div>
-
-          {/* Apple Studio Display Showcase Frame */}
-          <div className="hero-composition">
+          <div className="hero-composition compact-showcase">
             <div className="studio-window">
               <div className="studio-window-bar">
-                <div className="window-dots">
-                  <span className="dot dot-red" />
-                  <span className="dot dot-yellow" />
-                  <span className="dot dot-green" />
-                </div>
-                <div className="window-address-pill">
-                  <span className="pill-lock">🔒</span>
-                  <span>business.thekittycorp.com/{premierTemplate.industry}</span>
-                </div>
-                <div className="window-latency-badge">
-                  <Zap size={11} /> Fast
-                </div>
+                <div className="window-dots"><span className="dot dot-red" /><span className="dot dot-yellow" /><span className="dot dot-green" /></div>
+                <div className="window-address-pill"><span className="pill-lock">⌑</span><span>business.thekittycorp.com/{premierTemplate.industry}</span></div>
+                <div className="window-latency-badge"><Sparkles size={11} /> Studio preview</div>
               </div>
               <div className="studio-window-content">
                 <TemplateThumbnail template={premierTemplate} />
               </div>
             </div>
-
-            {/* Subtle Floating Proof Cards */}
-            <div className="floating-metric-card metric-left">
-              <Sparkles size={16} />
-              <div>
-                <strong>Performance-first</strong>
-                <small>Core Web Vitals aware</small>
-              </div>
-            </div>
-
-            <div className="floating-metric-card metric-right">
-              <ShieldCheck size={16} />
-              <div>
-                <strong>Global-ready</strong>
-                <small>Built for worldwide reach</small>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* Natural Metric Strip */}
-        <section className="service-strip" aria-label="Key Performance Indicators">
-          <div className="strip-item">
-            <span className="strip-number">88</span>
-            <span className="strip-label">Production Blueprints</span>
-          </div>
+        <section className="service-strip compact-strip" aria-label="Studio highlights">
+          <div className="strip-item"><span className="strip-number">88</span><span className="strip-label">Website blueprints</span></div>
           <div className="strip-divider" />
-          <div className="strip-item">
-            <span className="strip-number">18</span>
-            <span className="strip-label">Major Industries</span>
-          </div>
+          <div className="strip-item"><span className="strip-number">18</span><span className="strip-label">Industry collections</span></div>
           <div className="strip-divider" />
-          <div className="strip-item">
-            <span className="strip-number">Global</span>
-            <span className="strip-label">Performance-focused delivery</span>
-          </div>
-          <div className="strip-divider" />
-          <div className="strip-item">
-            <span className="strip-number">6 Mo</span>
-            <span className="strip-label">Complimentary Support</span>
-          </div>
+          <div className="strip-item"><span className="strip-number">Worldwide</span><span className="strip-label">Project enquiries welcome</span></div>
         </section>
 
-        {/* Interactive Industry Explorer Section */}
-        <section id="industries" className="section-wrap">
+        <section id="pricing" className="section-wrap pricing-section compact-pricing">
           <div className="section-heading">
             <div>
-              <span className="eyebrow">01 / TAILORED ARCHITECTURE</span>
-              <h2>
-                Engineered for your industry.
-                <br />
-                <span className="heading-sub">Built around how your clients buy.</span>
-              </h2>
+              <span className="eyebrow">WEBSITE PACKAGES</span>
+              <h2>Clear starting points.<br /><span className="heading-sub">Built around your business.</span></h2>
             </div>
-            <p>
-              Different businesses demand distinct conversion funnels. Select your
-              domain to explore targeted blueprints with pre-built booking, menus, or
-              inquiry flows.
-            </p>
-          </div>
-          <div className="industry-grid">
-            {industries.map((i, n) => (
-              <Link href={`/${i.id}`} key={i.id} className="industry-link">
-                <span className="industry-index">
-                  {String(n + 1).padStart(2, "0")}
-                </span>
-                <h3>{i.name}</h3>
-                <ArrowUpRight size={18} />
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Master Template Library & Live Preview Section */}
-        <section id="blueprints" className="section-wrap showcase">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">02 / INTERACTIVE BLUEPRINT SUITE</span>
-              <h2>
-                Explore 88 production blueprints.
-                <br />
-                <span className="heading-sub">Test-drive responsive viewports live.</span>
-              </h2>
-            </div>
-            <a
-              className="text-link"
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Request a custom prototype <ArrowUpRight size={17} />
-            </a>
-          </div>
-
-          {/* Full Interactive Template Library with Live Preview Modal */}
-          <TemplateLibrary />
-
-          <p className="caption">
-            All blueprints are functional prototypes running on Next.js 15 and Supabase.
-            Content and imagery are illustrative concepts tailored for client demonstration.
-          </p>
-        </section>
-
-        {/* The Architectural Standard (Bento Grid) */}
-        <section id="services" className="services-section">
-          <div className="section-wrap">
-            <span className="eyebrow">03 / THE ARCHITECTURAL STANDARD</span>
-            <div className="section-heading">
-              <h2>
-                Why category leaders choose
-                <br />
-                <span className="heading-sub">KITTY CORP over generic agencies.</span>
-              </h2>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="button dark"
-              >
-                Discuss your requirements <ArrowUpRight size={17} />
-              </a>
-            </div>
-            <div className="bento-grid">
-              <article className="bento-card bento-featured">
-                <div className="bento-icon-wrap">
-                  <Code2 size={24} />
-                </div>
-                <h3>Bespoke Next.js 15 & Turbopack Core</h3>
-                <p>
-                  Zero bloated WordPress plugins, zero sluggish builders. Every line of
-                  TypeScript is handwritten for sub-second page transitions, maximum
-                  Google Core Web Vitals, and effortless long-term maintainability.
-                </p>
-                <ul className="bento-points">
-                  <li><Check size={14} /> Server-side rendered for instant First Contentful Paint</li>
-                  <li><Check size={14} /> Clean HTML5 semantic markup optimized for organic SEO</li>
-                  <li><Check size={14} /> Zero client-side bloat or layout shifts</li>
-                </ul>
-              </article>
-
-              <article className="bento-card">
-                <div className="bento-icon-wrap">
-                  <Workflow size={24} />
-                </div>
-                <h3>High-Conversion Lead Funnels</h3>
-                <p>
-                  Built-in frictionless WhatsApp booking flows, appointment scheduling,
-                  and direct inquiry routing that turn casual visitors into paying clients.
-                </p>
-              </article>
-
-              <article className="bento-card">
-                <div className="bento-icon-wrap">
-                  <Globe size={24} />
-                </div>
-                <h3>Enterprise Edge Infrastructure</h3>
-                <p>
-                  Built with modern deployment infrastructure, automatic SSL, and security-conscious data handling. Hosting, uptime requirements, and third-party services are confirmed for each project.
-                </p>
-              </article>
-
-              <article className="bento-card bento-wide">
-                <div className="bento-icon-wrap">
-                  <ShieldCheck size={24} />
-                </div>
-                <div className="bento-wide-content">
-                  <div>
-                    <h3>6 Months of Dedicated Engineering Support</h3>
-                    <p>
-                      Launch is just day one. Every engagement includes six months of
-                      complimentary performance monitoring, security patches, and scope-aligned
-                      refinements so your digital presence remains flawless.
-                    </p>
-                  </div>
-                  <div className="bento-badge-pill">
-                    <CheckCircle2 size={16} /> Guaranteed Peace of Mind
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* 4-Step Production Process */}
-        <section className="section-wrap process">
-          <div>
-            <span className="eyebrow">04 / THE PRODUCTION PIPELINE</span>
-            <h2>
-              From concept to live platform.
-              <br />
-              <span className="heading-sub">Disciplined engineering at every stage.</span>
-            </h2>
-            <p>
-              We eliminate endless design rounds with working interactive prototypes,
-              transparent milestone reviews, and rapid production deployment.
-            </p>
-          </div>
-          <div className="process-steps">
-            {[
-              [
-                "01",
-                "Discovery & Scope",
-                "We analyze your business model, customer journey, and conversion targets.",
-              ],
-              [
-                "02",
-                "Working Prototype",
-                "We provide a live, clickable demo within 72 hours for tangible alignment.",
-              ],
-              [
-                "03",
-                "Production Build",
-                "We engineer clean frontend code, database schemas, and lead integrations.",
-              ],
-              [
-                "04",
-                "Launch & Guardrails",
-                "Live deployment on your custom domain backed by 6 months of active support.",
-              ],
-            ].map(([n, t, p]) => (
-              <div key={n} className="process-step-item">
-                <span className="step-num">{n}</span>
-                <div className="step-info">
-                  <h3>{t}</h3>
-                  <p>{p}</p>
-                </div>
-                <ChevronRight size={18} className="step-chevron" />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Transparent Investment Section */}
-        <section id="pricing" className="section-wrap pricing-section">
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow">05 / TRANSPARENT INVESTMENT</span>
-              <h2>
-                Predictable scope.
-                <br />
-                <span className="heading-sub">Exceptional return on investment.</span>
-              </h2>
-            </div>
-            <p>
-              Starting prices are shown in USD. Final pricing depends on scope, content, integrations, hosting, and agreed deliverables. Every project receives a written quote before work begins.
-            </p>
+            <p>Prices are starting points in USD. Your final quote reflects the agreed scope, content, integrations and delivery requirements.</p>
           </div>
           <div className="pricing-grid">
             <article className="pricing-card">
               <span className="pricing-tier-label">Basic Website</span>
               <div className="pricing-amount"><h3>From $200</h3><small>USD · one-time project starting price</small></div>
-              <p>A polished, responsive website that gives your business a clear online presence and makes it easy for customers to get in touch.</p>
+              <p>A polished, responsive online presence for businesses that need a clear place to be found and contacted.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Responsive design for mobile and desktop</li>
-                <li><Check size={14} /> Essential pages and clear navigation</li>
+                <li><Check size={14} /> Mobile and desktop responsive design</li>
+                <li><Check size={14} /> Essential pages and navigation</li>
                 <li><Check size={14} /> Contact and enquiry path</li>
                 <li><Check size={14} /> Basic on-page SEO setup</li>
               </ul>
-              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Start a Basic Website <ArrowUpRight size={16} /></a>
+              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Discuss Basic <ArrowUpRight size={16} /></a>
             </article>
             <article className="pricing-card featured-pricing-card">
               <div className="featured-ribbon">For growing businesses</div>
               <span className="pricing-tier-label">Business Website</span>
               <div className="pricing-amount"><h3>From $800</h3><small>USD · one-time project starting price</small></div>
-              <p>A custom multi-page business platform designed to present your services, build trust, and turn visits into qualified enquiries.</p>
+              <p>A tailored multi-page platform to present your services, build trust and turn visits into qualified enquiries.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Custom multi-page website architecture</li>
-                <li><Check size={14} /> Tailored design and conversion-focused layout</li>
+                <li><Check size={14} /> Custom multi-page architecture</li>
+                <li><Check size={14} /> Tailored design and conversion flow</li>
                 <li><Check size={14} /> Lead forms and agreed integrations</li>
                 <li><Check size={14} /> Technical and on-page SEO foundations</li>
                 <li><Check size={14} /> Analytics and performance setup</li>
               </ul>
-              <a className="button dark pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Build a Business Website <ArrowUpRight size={16} /></a>
+              <a className="button dark pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Discuss Business <ArrowUpRight size={16} /></a>
             </article>
             <article className="pricing-card">
               <span className="pricing-tier-label">E-commerce Website</span>
               <div className="pricing-amount"><h3>From $1,500</h3><small>USD · one-time project starting price</small></div>
-              <p>A complete online storefront with product discovery, shopping flows, and the integrations agreed for your operation.</p>
+              <p>A considered online storefront with product discovery, shopping flows and agreed commerce integrations.</p>
               <ul className="pricing-features">
-                <li><Check size={14} /> Product catalogue and category structure</li>
+                <li><Check size={14} /> Product catalogue and categories</li>
                 <li><Check size={14} /> Cart and checkout integration</li>
                 <li><Check size={14} /> Order and customer workflows</li>
                 <li><Check size={14} /> Mobile-first shopping experience</li>
                 <li><Check size={14} /> E-commerce SEO foundations</li>
               </ul>
-              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Launch an Online Store <ArrowUpRight size={16} /></a>
+              <a className="button outline-btn pricing-action-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer">Discuss E-commerce <ArrowUpRight size={16} /></a>
             </article>
           </div>
 
-          {/* Maintenance & Reliability Banner */}
-          <div className="maintenance-banner">
-            <div className="maintenance-icon-badge">
-              <Layers size={26} />
-            </div>
-            <div className="maintenance-copy">
-              <h3>Eligible projects include six months of agreed maintenance.</h3>
-              <p>
-                The exact coverage is confirmed in your written quote. Where included, we handle agreed updates, bug fixes, monitoring, and performance refinements after launch.
-              </p>
-            </div>
-            <div className="maintenance-tags">
-              <span><Check size={15} /> Uptime monitoring options</span>
-              <span><Check size={15} /> Continuous Security Patches</span>
-            </div>
+          <div className="bonus-grid" aria-label="Included project bonuses">
+            <article className="bonus-card">
+              <Globe2 size={21} />
+              <div><h3>1 year domain included</h3><p>One year of standard domain registration is included. Renewal is paid by you from year two onward.</p></div>
+            </article>
+            <article className="bonus-card">
+              <Layers size={21} />
+              <div><h3>1 month free maintenance</h3><p>Included after launch. Continue afterwards at $100/month or $1,000/year for 12 months (two months free).</p></div>
+            </article>
+            <article className="bonus-card">
+              <ShieldCheck size={21} />
+              <div><h3>Your accounts. Your control.</h3><p>Hosting, third-party APIs and paid plugins/apps are purchased directly under your own accounts.</p></div>
+            </article>
           </div>
+          <p className="pricing-disclaimer">Domain availability and eligibility are confirmed before registration. Third-party subscriptions, usage charges, taxes and premium domain costs are separate unless your written quote says otherwise. Ongoing maintenance begins only if you choose a paid plan.</p>
         </section>
 
-        {/* High-Impact Closing Consultation CTA */}
-        <section className="closing-cta">
-          <span className="eyebrow">BEGIN YOUR NEXT DIGITAL CHAPTER</span>
-          <h2>
-            Exceptional businesses begin with
-            <br />
-            <span className="cta-highlight">a focused conversation.</span>
-          </h2>
-          <p className="closing-cta-sub">
-            Whether you need a bespoke website or an intelligent business platform, our
-            engineering team is ready to demonstrate what is possible.
-          </p>
+        <section className="compact-details-section" aria-label="Explore the studio">
+          <details id="blueprints" className="home-details">
+            <summary>
+              <span><strong>Explore 88 website blueprints</strong><small>Preview layouts and concepts across different business needs.</small></span>
+              <ChevronDown size={20} />
+            </summary>
+            <div className="home-details-content"><TemplateLibrary /></div>
+          </details>
+          <details id="industries" className="home-details">
+            <summary>
+              <span><strong>Browse 18 industry collections</strong><small>Find a starting point tailored to your field.</small></span>
+              <ChevronDown size={20} />
+            </summary>
+            <div className="home-details-content">
+              <div className="industry-grid compact-industry-grid">
+                {industries.map((industry) => (
+                  <Link href={`/${industry.id}`} key={industry.id} className="industry-link">
+                    <h3>{industry.name}</h3><ArrowUpRight size={17} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </details>
+          <details className="home-details">
+            <summary>
+              <span><strong>How projects work</strong><small>A simple, transparent delivery process.</small></span>
+              <ChevronDown size={20} />
+            </summary>
+            <div className="home-details-content">
+              <div className="process-compact-grid">
+                <article><span>01</span><h3>Discovery & scope</h3><p>We understand your business, audience and requirements, then confirm the deliverables in writing.</p></article>
+                <article><span>02</span><h3>Design & build</h3><p>We shape the experience, share progress for review and develop the agreed website.</p></article>
+                <article><span>03</span><h3>Launch & handover</h3><p>We launch on your domain and keep hosting and third-party services under your accounts.</p></article>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section className="closing-cta compact-closing">
+          <span className="eyebrow">START A PROJECT</span>
+          <h2>Have a business to bring online?<br /><span className="cta-highlight">Let’s talk.</span></h2>
+          <p className="closing-cta-sub">Tell us what you’re building. We’ll discuss the right scope, timeline and package before anything begins.</p>
           <div className="closing-cta-actions">
-            <a
-              className="button dark cta-large-btn"
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <MessageCircle size={18} /> Chat on WhatsApp ({WHATSAPP_NUMBER})
-            </a>
-            <a
-              className="button outline-btn cta-secondary-btn"
-              href={OFFICIAL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Visit thekittycorp.com <ArrowUpRight size={17} />
-            </a>
+            <a className="button dark cta-large-btn" href={WHATSAPP_URL} target="_blank" rel="noreferrer"><MessageCircle size={18} /> WhatsApp · {WHATSAPP_NUMBER}</a>
+            <a className="button outline-btn cta-secondary-btn" href="mailto:support@thekittycorp.com">Email the team <ArrowUpRight size={17} /></a>
           </div>
         </section>
       </main>
